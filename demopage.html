@@ -1,0 +1,285 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <!-- Site Title -->
+    <title>ASP.NET MVC 4 Web API, Twitter Bootstrap, Responsive Web, Angular JS, JQuery UI, Native Mobile App, Tablet App</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="SHIVAM IT and Consultancy Services is an IT Company focusing on web development, Outsourcing, Mobile and Tablet app development, Web 4.0 Responsive development, CMS, CRM, application software as IT services partner of many MNCs, Google Apps Consulting Services, Metro Style Development Apps, iPhone Apps, Tablet Apps, Exchange online, Sharepoing online, Microsoft BPOS consultant, Cloud management, Progressively Enhanced web solution that can work on any internet device. SHIVAM ITCS has its headquarters located in Nathdwara Rajasthan INDIA." />
+    <meta name="keywords" content="IT,IT Company, SHIVAM ITCS, metro style development, metro style development apps, Manas Softwares, asp.net, MVC,Business Process Outsourcing, cloud computing services, iPhone Apps, Software Outsourcing, Services,php,mobile,phone,design,Logo,Graphics,wordpress,web,windows,pc,website,it Solution,c#,software programs,database,oracle,SEO,SEM,SMO,CRM,ERP,internet,Outsourcing,it support,Brand,Application Software,Mobile Application,WebDesign,Web Design,Web Development,Information Technology,it work,healthcare,Accounting,Help Desk,microsoft access,host,Domain,Web Application,android app,SMS,IT Consulting,Manas,mySQL,sql,microsoft sql,.net,VB.Net,Sharepoint,amazon,Manas Soft, Manas Software Outsourcing, cloud,MOSS,crm,HIPPA,aws,erp,WCF,WPF,Silverlight,MVC4,AJAX,jQuery,mooTools,web 2.0,CakePHP,Joomla,osCommerce,DotNetNuke,Open Source,HTML,XHTML,drupal,CMS,CodeFirst, Orchard, Content Management Systems,e-Commerce,Medical,invoice,envelope,business cards,flash,adobe,photoshop,illustrator,corel,indesign,webpage,MIS,msi,developer,Automation,Spy,Development,automated,webmaster,iPhone,BlackBerry,app,ios,windows,mobile,Symbian,svn,cvs,Programming,Programmer,Designer,Portfolio,Micro site,Consultancy Services,Udaipur,Nathdwara, Shrinath ji, Shree nath ji, Shree Radhey,Rajasthan,INDIA,313301" />
+    <meta name="author" content="SHIVAMITCS" />
+
+    <!-- Mobile Specific Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Theme Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <link href="http://angularpro.shivamitconsultancy.com/angular/toastr.css" rel="stylesheet" />
+
+    <!-- Preloader (Pace.js) -->
+    <script src="js/plugins/pace.min.js"></script>
+
+    <!--Google Maps API-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5DLwPPVAz88_k0yO2nmFe7T9k1urQs84"></script>
+
+    <!-- Modernizr -->
+    <script src="js/libs/modernizr.custom.js"></script>
+    <script src="js/libs/detectizr.min.js"></script>
+    <style>
+        .floatButton {
+            position: fixed;
+            left: 70%;
+            bottom: 25px;
+            z-index: 100;
+        }
+    </style>
+
+</head>
+
+<!-- Body -->
+<body class="gray-bg">
+
+    <!-- Preloader -->
+    <!-- Fake scrollbar (when open popups/modals) -->
+    <div class="fake-scrollbar"></div>
+
+    <!-- Off-canvas Navigation -->
+    <div class="offcanvas-nav">
+        <!-- Head (Fixed Part) -->
+        <div class="nav-head">
+            <!--<div class="top-bar">
+                <div class="nav-toggle" data-offcanvas="close"><i class="flaticon-list26"></i></div>
+                <form class="search-box">
+                    <span class="search-toggle search-icon"></span>
+                    <input type="text" id="search-field">
+                    <button type="submit" class="search-btn"><i class="search-icon"></i></button>
+                </form>
+                <div class="social-buttons">
+                    <a href="#" class="sb-twitter"><i class="bi-twitter"></i></a>
+                    <a href="#" class="sb-google-plus"><i class="bi-gplus"></i></a>
+                    <a href="#" class="sb-facebook"><i class="bi-facebook"></i></a>
+                </div>
+            </div>-->
+            <a href="index.html" class="offcanvas-logo">
+                <div class="icon"><img src="img/logo-big.png" alt="Appica 2"></div>
+                <div class="title">
+                    SHIVAM ITCS
+                    <span>Beyond Imagination</span>
+                </div>
+            </a>
+            <!--<a href="#" class="btn btn-ghost btn-light icon-left"><i class="bi-apple"></i> Download</a>
+            <a href="#" data-toggle="modal" data-target="#signin-page" data-modal-form="sign-in" class="nav-link">Sign In</a>
+            <a href="#" data-toggle="modal" data-target="#signin-page" data-modal-form="sign-up" class="text-smaller text-warning">Sign Up</a>-->
+        </div>
+        <!-- Body (Scroll Part) -->
+        <div class="nav-body">
+            <div class="overflow">
+                <div class="inner">
+                    <!-- Navigation -->
+                    <nav class="nav-link">
+
+                        <ul class="pages">
+                            <li ><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li class="active"><a href="demopage.html">Demo Page</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Off-canvas Navigation End -->
+    <!--Modal (Signin/Signup Page)-->
+    <!-- /.modal -->
+    <!-- Navbar -->
+    <header class="navbar navbar-fixed-top">
+        <div class="container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <img src="img/logo-small.png" alt="Appica 2">
+                SHIVAM ITCS
+            </a>
+            <!-- Social Buttons -->
+            <!--<div class="social-buttons">
+              <a href="#" class="sb-twitter"><i class="bi-twitter"></i></a>
+              <a href="#" class="sb-google-plus"><i class="bi-gplus"></i></a>
+              <a href="#" class="sb-facebook"><i class="bi-facebook"></i></a>
+            </div>-->
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <!--<span>iPhone and iPad versions</span>-->
+                <a href="#" class="btn btn-ghost btn-primary icon-left"><i class="bi-phone"></i> Hire US</a>
+                <a href="#" data-toggle="modal" data-target="#signin-page" data-modal-form="sign-in" class="action-btn">Sign in</a>
+                <div class="nav-toggle" data-offcanvas="open"><i class="flaticon-list26"></i></div>
+            </div>
+        </div>
+    </header><!-- Navbar End -->
+    <!-- Company Timeline -->
+
+
+    <div class="container" ng-app="app" ng-controller="mainController">
+        <div class="modal fade" id="signin-page" >
+            <div class="modal-dialog">
+                <div class="container">
+                    <div class="modal-form">
+                        <div class="tab-content">
+                            <form id="contactForm" class="tab-pane transition scale fade in active">
+                                <h2>Add Patient</h2>
+
+                                <div class="form-group space-top-2x">
+                                    <label for="personName" class="sr-only">Patient Name</label>
+                                    <input type="text" class="form-control" name="personName" id="personName" data-ng-model="Person.Name" placeholder="Patient Name" required>
+                                    <span class="error-label"></span>
+                                    <span class="valid-label"></span>
+                                </div>
+                                <div class="form-group space-top-2x">
+                                    <label for="si_email" class="sr-only">Email</label>
+                                    <input type="email" class="form-control" name="si_email" id="si_email" data-ng-model="Person.Email" placeholder="Email" required>
+                                    <span class="error-label"></span>
+                                    <span class="valid-label"></span>
+                                </div>
+                                <div class="form-group space-top-2x">
+                                    <label for="personage" class="sr-only">Patient Name</label>
+                                    <input type="text" class="form-control" name="personage" id="personage" data-ng-model="Person.Age" placeholder="Patient Age" required>
+                                    <span class="error-label"></span>
+                                    <span class="valid-label"></span>
+                                </div>
+
+
+
+                                <div class="form-group space-top-2x">
+                                    <label for="personphone" class="sr-only">Patient Name</label>
+                                    <input type="text" class="form-control" name="personphone" id="personphone" data-ng-model="Person.PhoneNum" placeholder="Patient Phone" readonly onfocus="$(this).removeAttr('readonly');" required>
+                                    <span class="error-label"></span>
+                                    <span class="valid-label"></span>
+                                </div>
+
+
+                                <div class="space-top-2x clearfix">
+                                    <button type="button" class="btn-round btn-ghost btn-danger pull-left" data-dismiss="modal"><i class="flaticon-cross37"></i></button>
+
+                                    <button id="showtoast" class="btn-round btn-ghost btn-success pull-right" data-ng-show="!(IsEditMode)" data-ng-click="addPerson();"><i class="flaticon-correct7"></i></button>
+                                    <button class="btn-round btn-ghost btn-success pull-right" data-ng-show="IsEditMode" data-ng-click="updatePerson(Person)"><i class="flaticon-correct7"></i></button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <!-- Hidden real nav tabs -->
+
+                    </div>
+                </div>
+            </div><!-- /.modal-dialog -->
+        </div>
+        <div id="main">
+
+            <div class="container">
+
+
+
+                <a href="#" data-toggle="modal" data-target="#signin-page" data-modal-form="sign-in" class="btn-round  btn-danger pull-right floatButton"><i class="flaticon-add63"></i></a>
+
+            </div>
+
+
+
+
+            <div class="page-heading text-right">
+                <div class="container">
+                    <div class="search-box">
+                        <span class="search-toggle search-icon"></span>
+                        <input type="text" id="search-field" ng-model="searchText" placeholder="filter Patients">
+                        <button type="submit" class="search-btn"><i class="search-icon"></i></button>
+                    </div>
+                    <h2>All Patients</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6" data-ng-repeat="per in People | filter:searchText">
+                    <div class="post-tile tile-solid-bg bg-info">
+                        <div class="post-body">
+                            <div class="post-title">
+
+                                <a href="#"><h3>{{per.Name}}</h3> <small><cite title="Source Title">Gotham, United Kingdom  <i class="icon-map-marker"></i></cite></small></a>
+                                <p>
+                                    <i class="icon-envelope"></i>&nbsp;{{per.Email}}
+                                    <br>
+                                    <i class="icon-globe"></i>&nbsp;{{per.Age}} Year(s)
+                                    <br>
+                                    <i class="icon-headphones"></i>&nbsp;{{per.PhoneNum}}
+                                </p>
+                            </div>
+                            <div class="post-meta space-top-2x">
+                                <div class="column">
+                                    <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#signin-page" data-modal-form="sign-in" data-ng-click="activeEditMode(per);">Edit</a>
+                                </div>
+                                <div class="column text-right">
+                                    <a class="btn btn-sm btn-danger" data-ng-click="deletePerson(per);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+    </div>
+
+
+
+
+
+
+    <!-- Contact Form -->
+    <section class="padding-bottom-2x">
+
+        <div class="container">
+
+        </div>
+    </section><!-- Contact Form End -->
+    <!-- Javascript (jQuery) Libraries and Plugins -->
+    <script src="js/libs/jquery-2.1.3.min.js"></script>
+    <script src="http://angularpro.shivamitconsultancy.com/angular/js/angular.min.js"></script>
+    <script src="js/libs/jquery.easing.1.3.js"></script>
+    <script src="js/plugins/velocity.min.js"></script>
+    <script src="js/plugins/bootstrap.min.js"></script>
+    <script src="js/plugins/smoothscroll.js"></script>
+    <script src="js/plugins/form-plugins.js"></script>
+    <script src="js/plugins/jquery.mCustomScrollbar.min.js"></script>
+    <script src="js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins/isotope.pkgd.min.js"></script>
+
+    <script src="js/scripts.js"></script>
+    <script src="http://angularpro.shivamitconsultancy.com/angular/toastr.js"> </script>
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
+
+    <script src="js/script.js"></script>
+</body><!-- Body End-->
+</html>

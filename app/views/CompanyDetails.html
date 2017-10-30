@@ -1,0 +1,143 @@
+﻿
+<h2>Manage Company Details</h2>
+
+
+
+
+<div class="row" style="background:white;">
+    <div class="col-md-6">
+        <h3>General Info</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input ng-model="companyinfo.companyName" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Registration Number</label>
+                    <input ng-model="companyinfo.registrationNo" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Contact 1</label>
+                    <input ng-model="companyinfo.contact1" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Contact 2</label>
+                    <input ng-model="companyinfo.contact2" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea rows="5" cols="50" ng-model="companyinfo.address" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!--<div class="form-group">
+                    <label>Notes</label>
+                    <textarea ng-model="companyinfo.notes" class="form-control"></textarea>
+                </div>-->
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Terms</label>
+                    <textarea ng-model="companyinfo.termsNConditions" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Footer text</label>
+                    <textarea ng-model="companyinfo.footerText" class="form-control"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Invoice Back ground Color</label>
+                    <input type="color" ng-model="companyinfo.bgColor" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-4">
+        <h3>Appearance Info</h3>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    <label>Select Logo</label>
+                    <button id="fileChoose" class="btn btn-warning"> <i class="fa fa-picture-o"></i> Choose File</button>
+                    <input type='file' id="file" style="visibility:hidden"/>
+                    <img id="blah" src="#" alt="your image" />
+                </div>
+               
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a ng-click="saveinfo()" ng-disabled="companyinfo.companyName=='' || companyinfo.registrationNo==''" class="btn btn-primary"> <i class="fa fa-check"></i> Save </a>
+        <a class="btn btn-danger"> <i class="fa fa-times"></i> Cancel </a>
+    </div>
+</div>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+
+            $("#blah").show();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(150);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+

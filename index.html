@@ -1,348 +1,323 @@
-﻿<!doctype html>
-<html>
+﻿<!DOCTYPE html>
+<html data-ng-app="AngularAuthApp">
 <head>
-    <meta charset="utf-8">
 
-    <!-- Site Title -->
-    <title>ASP.NET MVC 4 Web API, Twitter Bootstrap, Responsive Web, Angular JS, JQuery UI, Native Mobile App, Tablet App</title>
+    <meta name="keywords" content="angularjs,SPA,Single Page Application,refresh tokens,authentication,bearer token authentication,OWIN,bootstrap,bootstrap ui,tutorial,JS framework,ASP.NET WEB API 2,Taiseer Joudeh" />
+    <meta name="description" content="SPA built using angularjs,authentication is done using bearer token,back end built using Asp.net web api 2 and OWIN Framework,creatd by Taiseer Joudeh" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <title>SHIVAM ITCS- Invoice Management</title>
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="SHIVAM IT and Consultancy Services is an IT Company focusing on web development, Outsourcing, Mobile and Tablet app development, Web 4.0 Responsive development, CMS, CRM, application software as IT services partner of many MNCs, Google Apps Consulting Services, Metro Style Development Apps, iPhone Apps, Tablet Apps, Exchange online, Sharepoing online, Microsoft BPOS consultant, Cloud management, Progressively Enhanced web solution that can work on any internet device. SHIVAM ITCS has its headquarters located in Nathdwara Rajasthan INDIA." />
-    <meta name="keywords" content="IT,IT Company, SHIVAM ITCS, metro style development, metro style development apps, Manas Softwares, asp.net, MVC,Business Process Outsourcing, cloud computing services, iPhone Apps, Software Outsourcing, Services,php,mobile,phone,design,Logo,Graphics,wordpress,web,windows,pc,website,it Solution,c#,software programs,database,oracle,SEO,SEM,SMO,CRM,ERP,internet,Outsourcing,it support,Brand,Application Software,Mobile Application,WebDesign,Web Design,Web Development,Information Technology,it work,healthcare,Accounting,Help Desk,microsoft access,host,Domain,Web Application,android app,SMS,IT Consulting,Manas,mySQL,sql,microsoft sql,.net,VB.Net,Sharepoint,amazon,Manas Soft, Manas Software Outsourcing, cloud,MOSS,crm,HIPPA,aws,erp,WCF,WPF,Silverlight,MVC4,AJAX,jQuery,mooTools,web 2.0,CakePHP,Joomla,osCommerce,DotNetNuke,Open Source,HTML,XHTML,drupal,CMS,CodeFirst, Orchard, Content Management Systems,e-Commerce,Medical,invoice,envelope,business cards,flash,adobe,photoshop,illustrator,corel,indesign,webpage,MIS,msi,developer,Automation,Spy,Development,automated,webmaster,iPhone,BlackBerry,app,ios,windows,mobile,Symbian,svn,cvs,Programming,Programmer,Designer,Portfolio,Micro site,Consultancy Services,Udaipur,Nathdwara, Shrinath ji, Shree nath ji, Shree Radhey,Rajasthan,INDIA,313301" />
-    <meta name="author" content="SHIVAMITCS" />
+    
 
-    <!-- Mobile Specific Meta Tag -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="content/css/loading-bar.css" rel="stylesheet" />
+    <link href="content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="content/css/social-buttons.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <!-- Favicon Icon -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link href="content/css/toastr.css" rel="stylesheet" />
 
-    <!-- Theme Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" media="screen">
-
-    <!-- Preloader (Pace.js) -->
-    <script src="js/plugins/pace.min.js"></script>
-
-    <!--Google Maps API-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5DLwPPVAz88_k0yO2nmFe7T9k1urQs84"></script>
-
-    <!-- Modernizr -->
-    <script src="js/libs/modernizr.custom.js"></script>
-    <script src="js/libs/detectizr.min.js"></script>
+    <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="content/css/bootstrap.min.css" rel="stylesheet" />
 
 </head>
-
-<!-- Body -->
-<body class="gray-bg">
-
-    <!-- Preloader -->
-    <!-- Fake scrollbar (when open popups/modals) -->
-    <div class="fake-scrollbar"></div>
-
-    <!-- Off-canvas Navigation -->
-    <div class="offcanvas-nav">
-        <!-- Head (Fixed Part) -->
-        <div class="nav-head">
-            <!--<div class="top-bar">
-                <div class="nav-toggle" data-offcanvas="close"><i class="flaticon-list26"></i></div>
-                <form class="search-box">
-                    <span class="search-toggle search-icon"></span>
-                    <input type="text" id="search-field">
-                    <button type="submit" class="search-btn"><i class="search-icon"></i></button>
-                </form>
-                <div class="social-buttons">
-                    <a href="#" class="sb-twitter"><i class="bi-twitter"></i></a>
-                    <a href="#" class="sb-google-plus"><i class="bi-gplus"></i></a>
-                    <a href="#" class="sb-facebook"><i class="bi-facebook"></i></a>
-                </div>
-            </div>-->
-            <a href="index.html" class="offcanvas-logo">
-                <div class="icon"><img src="img/logo-big.png" alt="Appica 2"></div>
-                <div class="title">
-                    SHIVAM ITCS
-                    <span>Beyond Imagination</span>
-                </div>
-            </a>
-            <!--<a href="#" class="btn btn-ghost btn-light icon-left"><i class="bi-apple"></i> Download</a>
-            <a href="#" data-toggle="modal" data-target="#signin-page" data-modal-form="sign-in" class="nav-link">Sign In</a>
-            <a href="#" data-toggle="modal" data-target="#signin-page" data-modal-form="sign-up" class="text-smaller text-warning">Sign Up</a>-->
-        </div>
-        <!-- Body (Scroll Part) -->
-        <div class="nav-body">
-            <div class="overflow">
-                <div class="inner">
-                    <!-- Navigation -->
-                    <nav class="nav-link">
-                        
-                        <ul class="pages">
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="demopage.html">Demo Page</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                    </nav>
-                    
-                </div>
-            </div>
-        </div>
-    </div><!-- Off-canvas Navigation End -->
-    <!--Modal (Signin/Signup Page)-->
-    <div class="modal fade" id="signin-page">
-        <div class="modal-dialog">
-            <div class="container">
-                <div class="modal-form">
-                    <div class="tab-content">
-                        <!-- Sign in form -->
-                        <form class="tab-pane transition scale fade in active" id="signin-form" autocomplete="off">
-                            <h3 class="modal-title">Sign In</h3>
-                            <div class="form-group space-top-2x">
-                                <label for="si_email" class="sr-only">Email</label>
-                                <input type="email" class="form-control" name="si_email" id="si_email" placeholder="Email" readonly onfocus="$(this).removeAttr('readonly');" required>
-                                <span class="error-label"></span>
-                                <span class="valid-label"></span>
+<body>
+    <div class="m-scene" data-ng-controller="indexController" id="main">
+        <!-- Main Container -->
+        <!-- Sidebars -->
+        <!-- Right Sidebar -->
+        <ul id="slide-out" class="side-nav">
+            <li class="sidenav-header">
+                <!-- Srearch bar -->
+                <nav class="transparent no-shadow">
+                    <div class="nav-wrapper">
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label for="search"><i class="ion-android-search"></i></label>
+                                <i class="ion-android-close"></i>
                             </div>
-                            <div class="form-group">
-                                <label for="si-password" class="sr-only">Password</label>
-                                <input type="password" class="form-control" name="si-password" id="si-password" placeholder="Password" readonly onfocus="$(this).removeAttr('readonly');" required>
-                                <a class="helper-link" href="#">Forgot password?</a>
-                                <span class="error-label"></span>
-                                <span class="valid-label"></span>
-                            </div>
-                            <label class="checkbox">
-                                <input type="checkbox"> Remember me
-                            </label>
-                            <div class="space-top-2x clearfix">
-                                <button type="button" class="btn-round btn-ghost btn-danger pull-left" data-dismiss="modal"><i class="flaticon-cross37"></i></button>
-                                <button type="submit" class="btn-round btn-ghost btn-success pull-right"><i class="flaticon-correct7"></i></button>
-                            </div>
-                            <!-- Switching forms (Fake nav tab) -->
-                            <div class="form-switch helper-text space-top-2x">Don`t have an account? <a href="#form-1">Sign up for Appica 2</a></div>
-                        </form>
-                        <!-- Sign up form -->
-                        <form class="tab-pane transition scale fade" id="signup-form">
-                            <h3 class="modal-title">Sign Up</h3>
-                            <div class="form-group space-top-2x">
-                                <label for="su-email" class="sr-only">Email</label>
-                                <input type="email" class="form-control" name="su-email" id="su-email" placeholder="Email" required>
-                                <span class="error-label"></span>
-                                <span class="valid-label"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="su-password" class="sr-only">Password</label>
-                                <input type="password" class="form-control" name="su-password" id="su-password" placeholder="Password" required>
-                                <span class="error-label"></span>
-                                <span class="valid-label"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="su-password-repeat" class="sr-only">Repeat password</label>
-                                <input type="password" class="form-control" name="su-password-repeat" id="su-password-repeat" placeholder="Repeat password" required>
-                                <span class="error-label"></span>
-                                <span class="valid-label"></span>
-                            </div>
-                            <label class="checkbox">
-                                <input type="checkbox"> Subscribe for our news
-                            </label>
-                            <div class="space-top-2x clearfix">
-                                <button type="button" class="btn-round btn-ghost btn-danger pull-left" data-dismiss="modal"><i class="flaticon-cross37"></i></button>
-                                <button type="submit" class="btn-round btn-ghost btn-success pull-right"><i class="flaticon-correct7"></i></button>
-                            </div>
-                            <!-- Switching forms (Fake nav tab) -->
-                            <div class="form-switch helper-text space-top-2x">Already have an account? <a href="#form-2">Sign in</a></div>
                         </form>
                     </div>
-                    <!-- Hidden real nav tabs -->
-                    <ul class="nav-tabs hidden">
-                        <li id="form-1"><a href="#signup-form" data-toggle="tab">Sign up</a></li>
-                        <li id="form-2"><a href="#signin-form" data-toggle="tab">Sign in</a></li>
-                    </ul>
+                </nav>
+            </li>
+            <!-- Tabs -->
+            <li>
+                <ul class="tabs">
+                    <li class="tab col s3"><a class="active" href="#sidebar1">Social</a></li>
+                    <li class="tab col s3"><a href="#sidebar2">Chat</a></li>
+                </ul>
+            </li>
+            <li id="sidebar1" class="p-20">
+                <!-- Twitter -->
+                <div class="twitter">
+                    <h6 class="follow-us"><i class="ion-social-twitter"></i> Follow us on Twitter</h6>
+                    <div class="tweet">
+                        <h3>@Codnauts</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <a href="#">#tempor</a>.</p>
+                    </div>
+                    <div class="tweet">
+                        <h3>@Codnauts</h3>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in <a href="#">#voluptate</a> culpa qui officia deserunt mollit anim.</p>
+                    </div>
+                    <div class="tweet">
+                        <h3>@Codnauts</h3>
+                        <p>At vero eos et accusamus et iusto odio <a href="#">#dignissimos</a> <a href="#">#ducimus</a> qui blanditiis praesentium.</p>
+                    </div>
                 </div>
-            </div>
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <!-- Navbar -->
-    <header class="navbar navbar-fixed-top">
-        <div class="container">
-            <!-- Logo -->
-            <a href="index.html" class="logo">
-                <img src="img/logo-small.png" alt="Appica 2">
-                SHIVAM ITCS
-            </a>
-            <!-- Social Buttons -->
-            <!--<div class="social-buttons">
-              <a href="#" class="sb-twitter"><i class="bi-twitter"></i></a>
-              <a href="#" class="sb-google-plus"><i class="bi-gplus"></i></a>
-              <a href="#" class="sb-facebook"><i class="bi-facebook"></i></a>
-            </div>-->
+                <!-- Facebook -->
+                <div class="facebook">
+                    <h6 class="follow-us">Notifications</h6>
+                    <div class="face-notification">
+                        <img src="img/user2.jpg" alt="" class="cricle">
+                        <div>
+                            <p>Mike Green</p>
+                            <span>Sent you a message</span>
+                            <span class="small">Today at 16:48</span>
+                        </div>
+                    </div>
+                    <div class="face-notification">
+                        <img src="img/user.jpg" alt="" class="cricle">
+                        <div>
+                            <p>Lara Connors</p>
+                            <span>Post a photo with you</span>
+                            <span class="small">Today at 14:26</span>
+                        </div>
+                    </div>
+                    <div class="face-notification">
+                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <div>
+                            <p>Mike Green</p>
+                            <span>Post something...</span>
+                            <span class="small">Yesterday at 03:19</span>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li id="sidebar2" class="p-20">
+                <!-- Chat -->
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user.jpg" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Mike Green</p>
+                        <span>Sent you a message</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user2.jpg" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Lora Bell</p>
+                        <span>6 New messages</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <span class="dot orange"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Tony Lee</p>
+                        <span>Away from keyboard.</span>
+                        <span class="small">Away</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user4.jpg" alt="" class="cricle">
+                        <span class="dot grey"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Jim Connor</p>
+                        <span>Is offline.</span>
+                        <span class="small">offline</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user5.jpg" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Sara Lower</p>
+                        <span>Sent you a message</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user.jpg" alt="" class="cricle">
+                        <span class="dot grey"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Mick Pole</p>
+                        <span>Is offline.</span>
+                        <span class="small">offline</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>James Tree</p>
+                        <span>Awaiting your reply.</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!-- Left Sidebar -->
+        <ul id="slide-out-left" class="side-nav collapsible">
+            <li>
+                <div class="sidenav-header primary-color">
+
+                    <div class="nav-avatar">
+                        <img class="circle avatar" src="content/logo.png" alt="">
+                        <div class="avatar-body">
+                            <h3>SHIVAM </h3>
+                            <p>Beyond Imagination</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/CompanyDetails"> <i class="fa fa-building"></i>Company Details</a></li>
+            <!--<li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/SelectBillFields">Select Fields</a></li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/SelectBillFieldsNew">SelectNew Fields</a></li>-->
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/SelectFields"> <i class="fa fa-list"></i>Manage columns</a></li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/InvoiceDetails"><i class="fa fa-file"></i>Recent invoices</a></li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/invoice"><i class="fa fa-plus"></i>Generate invoice</a></li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/Logout"><i class="fa fa-sign-out"></i>Log out</a></li>
+        </ul>
+        <!-- End of Sidebars -->
+        <!-- Page Content -->
+        <div id="content" class="page">
+
             <!-- Toolbar -->
-            <div class="toolbar">
-                <!--<span>iPhone and iPad versions</span>-->
-                <a href="#" class="btn btn-ghost btn-primary icon-left"><i class="bi-phone"></i> Hire US</a>
-                <a href="#" data-toggle="modal" data-target="#signin-page" data-modal-form="sign-in" class="action-btn">Sign in</a>
-                <div class="nav-toggle" data-offcanvas="open"><i class="flaticon-list26"></i></div>
-            </div>
-        </div>
-    </header><!-- Navbar End -->
-    <!-- Company Timeline -->
-    <!-- Figures -->
-    <section class="space-top-2x padding-bottom-2x">
-        <div class="container">
-            <div class="row">
-              
-                <div class="col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8">
-                   
-                    <div class="block-heading">
-                        <h2>SHIVAM ITCS</h2>
-                        <span>Angular JS Mobile App and Responsive Web demo</span>
-                    </div>
-                 
+            <div id="toolbar" class="primary-color">
+                <div class="open-left" id="open-left" data-activates="slide-out-left">
+                    <i class="fa fa-bars"></i>
                 </div>
-               
-            </div>
-            <div class="row space-top">
-                <div class="col-sm-6">
-                    <div class="news-block">
-                        <span>January 13, 2014</span>
-                        <a href="#"><h3>About Angular Demo</h3></a>
-                        <p>
-                            Super Angular development with Bootstrap V3, Token based OWIN security logins and Roles, multilingual, Super admin, Ecomm, modern Photo Gallery and much more.
-                            Vijay Paliwal IT Manager @ SHIVAM ITCS
+                <span class="title">SHIVAM ITCS</span>
+                <span class="title"></span>
 
-                            This is a hybrid mobile application using Angular JS that is having its Android version as well, you can install it to any of your Android device you have. Click on Angular Demo link below to review it
-                        </p>
+                
 
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="news-block">
-                        <span>January 14, 2014</span>
-                        <a href="#"><h3>From Our CTO  : Ajay Paliwal</h3></a>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo... </p>
+                <div style="width:150px;" class="open-right" id="open-right1" data-activates="slide-out1">
+                    <a style="font-size:18px; color:#fff; text-decoration:none;" href="#/Logout"> Log Out  <i class="fa fa-sign-out"></i></a>
 
-                    </div>
                 </div>
             </div>
 
-        </div>
-    </section><!-- Figures End -->
+            <div class="container">
 
-    <div class="container">
+                <div data-ng-view="">
+                </div>
 
-        <!-- Categories -->
+            </div>
 
-        <hr>
-        <!-- Twitter Feed -->
-        <!-- Featured Posts -->
-        <a href="index.html" class="featured-post bg-danger col-sm-3">
-            <div class="content">
-                <div class="arrow"><i class="flaticon-arrow413"></i></div>
-                <h3>SHIVAM ITCS</h3>
-                <p>For a Modern, extensive, flawless, highly responsive and all encompassing web & mobile development, We are experts & renowned well within its turf.<br /><br /><br /></p>
-            </div>
-        </a>
-        <a href="demopage.html" class="featured-post bg-warning col-sm-3">
-            <div class="content">
-                <div class="arrow"><i class="flaticon-arrow413"></i></div>
-                <h3>Angular Demo</h3>
-                <p>ASP.NET MVC 4, Web API, Responsive Bootstrap, Angular JS, JQuery UI, Mobile App, Tablet App, Native mobile App<br /><br /><br /><br /></p>
-            </div>
-        </a>
-        <a href="about.html" class="featured-post bg-primary col-sm-3">
-            <div class="content">
-                <div class="arrow"><i class="flaticon-arrow413"></i></div>
-                <h3>About US</h3>
-                <p>is a India-based IT firm specializing in complex web and mobile application design & development. As a global outsourcing provider of IT services, we have a wide range of services to offer you. </p>
-            </div>
-        </a>
-        <a href="contact.html" class="featured-post bg-info col-sm-3" style="background-image: url(img/blog/fp04.jpg);">
-            <div class="content">
-                <div class="arrow"><i class="flaticon-arrow413"></i></div>
-                <h3>Contact US</h3>
-                <p>Web 4.0 Development, Mobile Apps, Tablet Solutions, Windows Azure, IT Outsourcing  We are known for creating intelligent and user friendly applications for a wide array of industries.<br /><br /></p>
-            </div>
-        </a>
+        </div> <!-- End of Page Content -->
 
     </div>
-
-
-
-
-
-
-    <!-- Contact Form -->
-    <section class="padding-bottom-2x">
-
+    <!--<div class="jumbotron">
         <div class="container">
-            <!-- Badge -->
-            <!--<div class="badge badge-reverse alt-color-2">
-              Drop us a line
-              <span class="icon"><i class="flaticon-mail21"></i></span>
-            </div>-->
-            <!--<div class="row">
-              <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                <form method="post" class="ajax-form space-top space-bottom">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="cont_form_name" class="sr-only">Name</label>
-                        <input type="text" class="form-control" name="name" id="cont_form_name" placeholder="Name">
-                        <span class="error-label"></span>
-                        <span class="valid-label"></span>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="cont_form_email" class="sr-only">Email</label>
-                        <input type="email" class="form-control" name="email" id="cont_form_email" placeholder="Email">
-                        <span class="error-label"></span>
-                        <span class="valid-label"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="cont_form_message" class="sr-only">Message</label>
-                    <textarea name="message" id="cont_form_message" class="form-control" placeholder="Enter your message"></textarea>
-                    <span class="error-label"></span>
-                    <span class="valid-label"></span>
-                  </div>
-                  <div class="row space-top">
-                    <div class="col-sm-6">
-                      <label class="checkbox space-top">
-                        <input type="checkbox"> Subscribe to our news
-                      </label>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="row">
-                        <div class="col-lg-6 col-lg-offset-6 col-md-8 col-md-offset-4 col-sm-12">
-                          <button type="submit" class="btn btn-ghost btn-block btn-sm btn-primary">Submit</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="response-holder"></div>
-                </form>
-              </div>
-            </div>-->
+            <div class="page-header text-center">
+                <h1>AngularJS Authentication</h1>
+            </div>
         </div>
-    </section><!-- Contact Form End -->
-    <!-- Javascript (jQuery) Libraries and Plugins -->
-    <script src="js/libs/jquery-2.1.3.min.js"></script>
-    <script src="js/libs/jquery.easing.1.3.js"></script>
-    <script src="js/plugins/velocity.min.js"></script>
-    <script src="js/plugins/bootstrap.min.js"></script>
-    <script src="js/plugins/smoothscroll.js"></script>
-    <script src="js/plugins/form-plugins.js"></script>
-    <script src="js/plugins/jquery.mCustomScrollbar.min.js"></script>
-    <script src="js/plugins/jquery.magnific-popup.min.js"></script>
-    <script src="js/plugins/isotope.pkgd.min.js"></script>
+    </div>-->
+    <!-- 3rd party libraries -->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>-->
+    <script src="scripts/jquery-1.11.0.min.js"></script>
 
-    <script src="js/scripts.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/moment.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/angular-local-storage.min.js"></script>
+    <script src="scripts/loading-bar.min.js"></script>
+    
+     
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/materialize.min.js"></script>
 
-</body><!-- Body End-->
+    <script src="js/functions.js"></script>
+
+
+    <!-- Load app main script -->
+    <script src="app/app.js?v=2"></script>
+    <!-- Load services -->
+    <script src="app/services/authInterceptorService.js?v=2"></script>
+    <script src="app/services/authService.js?v=2"></script>
+    <script src="app/services/ordersService.js?v=2"></script>
+    <script src="app/services/tokensManagerService.js?v=2"></script>
+    <!-- Load controllers -->
+    <script src="app/controllers/indexController.js?v=2"></script>
+    <script src="app/controllers/homeController.js?v=2"></script>
+    <script src="app/controllers/loginController.js?v=2"></script>
+    <script src="app/controllers/signupController.js?v=2"></script>
+    <script src="app/controllers/ordersController.js?v=2"></script>
+    <script src="app/controllers/refreshController.js?v=2"></script>
+    <script src="app/controllers/tokensManagerController.js?v=2"></script>
+    <script src="app/controllers/associateController.js?v=2"></script>
+    <script src="app/controllers/SelectBillFieldsController.js"></script>
+    <script src="app/controllers/InvoiceDetailsController.js"></script>
+    <script src="app/controllers/CompanyDetailsController.js"></script>
+    <script src="app/controllers/invoiceController.js?v=2"></script>
+    <script src="app/controllers/SelectBillFieldsNewController.js"></script>
+    <script src="app/controllers/SelectFieldsController.js"></script>
+
+    <script src="js/toastr.min.js"></script>
+
+
+
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+    <script>
+        $(document).ready(function () {
+            $("span.clickable").parents('.panel').find('.panel-body').slideUp("slow");
+            $("span.clickable").addClass('Chek');
+        })
+
+
+        $(document).on('click', '.panel-heading span.clickable', function (e) {
+            var $this = $(this);
+            if (!$this.hasClass('panel-collapsed')) {
+                $this.parents('.panel').find('.panel-body').slideUp("slow");
+                $this.addClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+            } else {
+                $this.parents('.panel').find('.panel-body').slideDown("slow");
+                $this.removeClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+            }
+        })
+    </script>
+
+
+    
+</body>
+
 </html>

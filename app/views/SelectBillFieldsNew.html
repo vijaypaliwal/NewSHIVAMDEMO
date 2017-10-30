@@ -1,0 +1,344 @@
+﻿<style>
+    .checkbox label:after,
+    .radio label:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .checkbox .cr,
+    .radio .cr {
+        position: relative;
+        display: inline-block;
+        border: 1px solid #a9a9a9;
+        border-radius: .25em;
+        width: 1.3em;
+        height: 1.3em;
+        float: left;
+        margin-right: .5em;
+    }
+
+    .radio .cr {
+        border-radius: 50%;
+    }
+
+        .checkbox .cr .cr-icon,
+        .radio .cr .cr-icon {
+            position: absolute;
+            font-size: .8em;
+            line-height: 0;
+            top: 50%;
+            left: 20%;
+        }
+
+        .radio .cr .cr-icon {
+            margin-left: 0.04em;
+        }
+
+    .checkbox label input[type="checkbox"],
+    .radio label input[type="radio"] {
+        display: none;
+    }
+
+        .checkbox label input[type="checkbox"] + .cr > .cr-icon,
+        .radio label input[type="radio"] + .cr > .cr-icon {
+            transform: scale(3) rotateZ(-20deg);
+            opacity: 0;
+            transition: all .3s ease-in;
+        }
+
+        .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+        .radio label input[type="radio"]:checked + .cr > .cr-icon {
+            transform: scale(1) rotateZ(0deg);
+            opacity: 1;
+        }
+
+        .checkbox label input[type="checkbox"]:disabled + .cr,
+        .radio label input[type="radio"]:disabled + .cr {
+            opacity: .5;
+        }
+
+
+
+    .row {
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .panel-heading span {
+        margin-top: -20px;
+        font-size: 15px;
+    }
+</style>
+
+<h2>Manage Column</h2>
+
+<!--<div class="row">
+    <div class="col-md-6">
+        <div class="well">
+            <h4>Select Text Fields :</h4>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Default Value</th>
+                    <th>Sort Order</th>
+                </tr>
+                <tr ng-if="obj.type == 'text'" ng-repeat="obj in ViewModel">
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="obj.isChecked" checked />
+                                <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                            </label>
+                        </div>
+                    </td>
+                    <td><input class="form-control" type="text" ng-model="obj.Name" /></td>
+                    <td><input class="form-control" type="text" ng-model="obj.DefaultValue" /></td>
+                    <td><input class="form-control" type="text" ng-model="obj.SortOrder" /></td>
+                </tr>
+            </table>
+
+            <h4>Select Date Fields :</h4>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Default Value</th>
+                    <th>Sort Order</th>
+                </tr>
+                <tr ng-if="obj.type == 'date'" ng-repeat="obj in ViewModel">
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="obj.isChecked" checked />
+                                <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                            </label>
+                        </div>
+                    </td>
+                    <td><input class="form-control" type="text" ng-model="obj.Name" /></td>
+                    <td><input class="form-control" type="date" ng-model="obj.DefaultValue" class="form-control" /></td>
+                    <td><input class="form-control" type="text" ng-model="obj.SortOrder" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        <div style="min-height:687px;" class="well">
+            <h4>Select Dropdown Fields :</h4>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Default Value</th>
+                    <th>Sort Order</th>
+                </tr>
+                <tr ng-if="obj.type == 'dropdown'" ng-repeat="obj in ViewModel">
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="obj.isChecked" checked />
+                                <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" ng-model="obj.Name" />
+                    </td>
+                    <td>
+                        <select class="form-control">
+                            <option ng-repeat="x in obj.ComboValues" value="x">{{x}}</option>
+                        </select>
+                    </td>
+                    <td><input class="form-control" type="text" ng-model="obj.SortOrder" /></td>
+                </tr>
+            </table>
+
+            <h4>Select Number Fields :</h4>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Default Value</th>
+                    <th>Sort Order</th>
+                </tr>
+                <tr ng-if="obj.type == 'Number'" ng-repeat="obj in ViewModel">
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="obj.isChecked" checked />
+                                <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                            </label>
+                        </div>
+                    </td>
+                    <td><input class="form-control" type="text" ng-model="obj.Name" /></td>
+                    <td><input class="form-control" type="number" ng-model="obj.DefaultValue" /></td>
+                    <td><input class="form-control" type="text" ng-model="obj.SortOrder" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a ng-click="CreateBill()" class="btn btn-success"> <i class="fa fa-check"> </i> Create Bill </a>
+        <a class="btn btn-danger" ng-click="ResetFields()"> <i class="fa fa-refresh"></i> Reset</a>
+
+    </div>
+</div>-->
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select Text Fields :</h3>
+                    <span id="mySpan" class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Default Value</th>
+                            <th>Sort Order</th>
+                        </tr>
+                        <tr ng-if="obj.type == 'text'" ng-repeat="obj in ViewModel">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="" ng-model="obj.isChecked" checked />
+                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td><input class="form-control" type="text" ng-model="obj.Name" /></td>
+                            <td><input class="form-control" type="text" ng-model="obj.DefaultValue" /></td>
+                            <td><input class="form-control" type="text" ng-model="obj.SortOrder" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select Date Fields :</h3>
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Default Value</th>
+                            <th>Sort Order</th>
+                        </tr>
+                        <tr ng-if="obj.type == 'date'" ng-repeat="obj in ViewModel">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="" ng-model="obj.isChecked" checked />
+                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td><input class="form-control" type="text" ng-model="obj.Name" /></td>
+                            <td><input class="form-control" type="date" ng-model="obj.DefaultValue" class="form-control" /></td>
+                            <td><input class="form-control" type="text" ng-model="obj.SortOrder" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select Dropdown Fields :</h3>
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Default Value</th>
+                            <th>Sort Order</th>
+                        </tr>
+                        <tr ng-if="obj.type == 'dropdown'" ng-repeat="obj in ViewModel">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="" ng-model="obj.isChecked" checked />
+                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" ng-model="obj.Name" />
+                            </td>
+                            <td>
+                                <select class="form-control">
+                                    <option ng-repeat="x in obj.ComboValues" value="x">{{x}}</option>
+                                </select>
+                            </td>
+                            <td><input class="form-control" type="text" ng-model="obj.SortOrder" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Select Number Fields :</h3>
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Default Value</th>
+                            <th>Sort Order</th>
+                        </tr>
+                        <tr ng-if="obj.type == 'Number'" ng-repeat="obj in ViewModel">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="" ng-model="obj.isChecked" checked />
+                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td><input class="form-control" type="text" ng-model="obj.Name" /></td>
+                            <td><input class="form-control" type="number" ng-model="obj.DefaultValue" /></td>
+                            <td><input class="form-control" type="text" ng-model="obj.SortOrder" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <a ng-click="CreateBill()" class="btn btn-success"> <i class="fa fa-check"> </i> Create Bill </a>
+        <a class="btn btn-danger" ng-click="ResetFields()"> <i class="fa fa-refresh"></i> Reset</a>
+
+    </div>
+</div>

@@ -169,44 +169,18 @@
 
     <div id="sticky" class="row hidden-lg">
         <div style="text-align:center;" class="col-md-12">
-            <a class="btn btn-small btn-success addmobile primary-color" ng-click="AddRow()"> <i class="fa fa-plus"></i></a>
+            <a class="btn btn-small btn-success addmobile" ng-click="AddRow()"> <i class="fa fa-plus"></i></a>
         </div>
     </div>
 
 
 
    
-        <div style="padding:12px;" class="well hidden-lg hidden-print" ng-repeat="obj in ActiveList track by $index">
-
-          
-            <div ng-if="object.isChecked == true" ng-repeat="object in obj | orderBy: object.sort ">
-                <div ng-if="object.type == 'text'">
-
-                  
-
-                    <input placeholder="{{object.Name}}" type="text" class="form-control" ng-model="_obj.Column1" name="name" value="" />
-
-                </div>
-                <div ng-if="object.type == 'dropdown'">
-
-                </div>
-                <div ng-if="object.type == 'Number'">
-                    <input placeholder="{{object.Name}}" type="number" class="form-control" ng-model="_obj.Column1" name="name" value="" />
-
-                </div>
-                <div ng-if="object.type == 'date'">
-                    <input placeholder="{{object.Name}}" type="date" class="form-control" ng-model="_obj.Column1" name="name" value="" />
-
-                </div>
-            </div>
-            <div style="text-align:right">
-                <a  style="color:brown" ng-click="Deleterow(obj)"> Delete </a>
-            </div>
-        </div>
+        
    
   
 
-    <table class="table table-bordered hidden-xs invoiceprint">
+    <table class="table table-bordered invoiceprint">
         <thead>
             <tr>
 
@@ -338,11 +312,11 @@
 
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 col-xs-12">
             
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-12">
             <div class="print-right pull-right">
 
                 <div style="margin-bottom:0" class="row">
@@ -398,9 +372,9 @@
         </p>
 
     </div>
-    <div  class="row">
+    <div class="row">
         <div class="col-md-12">
-            <a ng-click="postdata()" ng-disabled="CheckSaveDisabled()" class="btn btn-success"> <i class="fa fa-check"></i> Save Invoice </a>
+            <a ng-click="postdata()" ng-disabled="CheckSaveDisabled()" class="btn btn-success"> <i class="fa fa-check"></i> Save </a>
             <a onclick="window.print()" class="btn btn-warning"><i class="fa fa-print" ></i> Print </a>
             <a href="#/InvoiceDetails"  class="btn btn-danger"> <i class="fa fa-times"></i> Cancel </a>
         </div>
@@ -512,6 +486,12 @@
             padding: 0;
             margin-right: 0;
         }
+
+   .col-xs-12 .pull-right
+   {
+       float:left;
+       width:100%;
+   }
    
   
 </style>

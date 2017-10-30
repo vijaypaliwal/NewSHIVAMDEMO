@@ -1,0 +1,55 @@
+﻿<form style="display:none;" class="form-login" role="form">
+    <h2 class="form-login-heading">Sign up</h2>
+    <input type="text" class="form-control" placeholder="Company Name" data-ng-model="registration.userName" required autofocus>
+    <input type="password" class="form-control" placeholder="Password" data-ng-model="registration.password" required>
+    <input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registration.confirmPassword" required>
+    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="signUp()">Submit</button>
+    <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+        {{message}}
+    </div>
+</form>
+
+
+<div id="content" class="grey-blue login">
+
+    <!-- Toolbar -->
+    <div id="toolbar" class="tool-login primary-color animated fadeindown">
+        <a href="#/login" class="open-left">
+            <i class="fa fa-arrow-circle-left"></i>
+        </a>
+    </div>
+    <div class="login-form animated fadeinup delay-2 z-depth-1">
+
+        <h1>Sign Up</h1>
+        <div class="input-field">
+
+            <input id="login" type="text" class="form-control"  data-ng-model="registration.userName" required autofocus>
+            <label for="login">Company Name</label>
+        </div>
+
+        <div class="input-field" style="margin-bottom:20px; margin-top:25px;">
+
+            <input id="login-psw" type="password" class="form-control" data-ng-model="registration.password" required>
+            <label for="login-psw">Password</label>
+        </div>
+
+
+        <div class="input-field" style="margin-bottom:20px; margin-top:25px;">
+
+            <input id="confirm" type="password" class="form-control" data-ng-model="registration.confirmPassword" required>
+            <label for="confirm">Confirm Password</label>
+        </div>
+
+        <a data-ng-click="signUp()" class="waves-effect waves-light btn-large accent-color width-100 m-b-20 animated bouncein delay-4">Login</a>
+        <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+            {{message}}
+        </div>
+
+      
+
+
+    </div>
+</div>
+
+
+

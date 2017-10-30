@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="AngularAuthApp">
+<head>
+
+    <meta name="keywords" content="angularjs,SPA,Single Page Application,refresh tokens,authentication,bearer token authentication,OWIN,bootstrap,bootstrap ui,tutorial,JS framework,ASP.NET WEB API 2,Taiseer Joudeh" />
+    <meta name="description" content="SPA built using angularjs,authentication is done using bearer token,back end built using Asp.net web api 2 and OWIN Framework,creatd by Taiseer Joudeh" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <title>SHIVAM ITCS- Invoice Management</title>
+
+    
+
+    <link href="content/css/loading-bar.css" rel="stylesheet" />
+    <link href="content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="content/css/social-buttons.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    
+    <link href="content/css/toastr.css" rel="stylesheet" />
+
+    <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="content/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="m-scene" data-ng-controller="indexController" id="main">
+        <!-- Main Container -->
+        <!-- Sidebars -->
+        <!-- Right Sidebar -->
+        <ul id="slide-out" class="side-nav">
+            <li class="sidenav-header">
+                <!-- Srearch bar -->
+                <nav class="transparent no-shadow">
+                    <div class="nav-wrapper">
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label for="search"><i class="ion-android-search"></i></label>
+                                <i class="ion-android-close"></i>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </li>
+            <!-- Tabs -->
+            <li>
+                <ul class="tabs">
+                    <li class="tab col s3"><a class="active" href="#sidebar1">Social</a></li>
+                    <li class="tab col s3"><a href="#sidebar2">Chat</a></li>
+                </ul>
+            </li>
+            <li id="sidebar1" class="p-20">
+                <!-- Twitter -->
+                <div class="twitter">
+                    <h6 class="follow-us"><i class="ion-social-twitter"></i> Follow us on Twitter</h6>
+                    <div class="tweet">
+                        <h3>@Codnauts</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <a href="#">#tempor</a>.</p>
+                    </div>
+                    <div class="tweet">
+                        <h3>@Codnauts</h3>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in <a href="#">#voluptate</a> culpa qui officia deserunt mollit anim.</p>
+                    </div>
+                    <div class="tweet">
+                        <h3>@Codnauts</h3>
+                        <p>At vero eos et accusamus et iusto odio <a href="#">#dignissimos</a> <a href="#">#ducimus</a> qui blanditiis praesentium.</p>
+                    </div>
+                </div>
+                <!-- Facebook -->
+                <div class="facebook">
+                    <h6 class="follow-us">Notifications</h6>
+                    <div class="face-notification">
+                        <img src="img/user2.jpg" alt="" class="cricle">
+                        <div>
+                            <p>Mike Green</p>
+                            <span>Sent you a message</span>
+                            <span class="small">Today at 16:48</span>
+                        </div>
+                    </div>
+                    <div class="face-notification">
+                        <img src="img/user.jpg" alt="" class="cricle">
+                        <div>
+                            <p>Lara Connors</p>
+                            <span>Post a photo with you</span>
+                            <span class="small">Today at 14:26</span>
+                        </div>
+                    </div>
+                    <div class="face-notification">
+                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <div>
+                            <p>Mike Green</p>
+                            <span>Post something...</span>
+                            <span class="small">Yesterday at 03:19</span>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li id="sidebar2" class="p-20">
+                <!-- Chat -->
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user.jpg" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Mike Green</p>
+                        <span>Sent you a message</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user2.jpg" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Lora Bell</p>
+                        <span>6 New messages</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <span class="dot orange"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Tony Lee</p>
+                        <span>Away from keyboard.</span>
+                        <span class="small">Away</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user4.jpg" alt="" class="cricle">
+                        <span class="dot grey"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Jim Connor</p>
+                        <span>Is offline.</span>
+                        <span class="small">offline</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user5.jpg" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Sara Lower</p>
+                        <span>Sent you a message</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user.jpg" alt="" class="cricle">
+                        <span class="dot grey"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>Mick Pole</p>
+                        <span>Is offline.</span>
+                        <span class="small">offline</span>
+                    </div>
+                </div>
+
+                <div class="chat-sidebar">
+                    <div class="chat-img">
+                        <img src="img/user3.jpg" alt="" class="cricle">
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="chat-message">
+                        <p>James Tree</p>
+                        <span>Awaiting your reply.</span>
+                        <span class="small">online</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!-- Left Sidebar -->
+        <ul id="slide-out-left" class="side-nav collapsible">
+            <li>
+                <div class="sidenav-header primary-color">
+
+                    <div class="nav-avatar">
+                        <img class="circle avatar" src="content/logo.png" alt="">
+                        <div class="avatar-body">
+                            <h3>SHIVAM </h3>
+                            <p>Beyond Imagination</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/CompanyDetails"> <i class="fa fa-building"></i>Company Details</a></li>
+            <!--<li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/SelectBillFields">Select Fields</a></li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/SelectBillFieldsNew">SelectNew Fields</a></li>-->
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/SelectFields"> <i class="fa fa-list"></i>Manage columns</a></li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/InvoiceDetails"><i class="fa fa-file"></i>Recent invoices</a></li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/invoice"><i class="fa fa-plus"></i>Generate invoice</a></li>
+            <li data-ng-hide="!authentication.isAuth"><a class="no-child" href="#/Logout"><i class="fa fa-sign-out"></i>Log out</a></li>
+        </ul>
+        <!-- End of Sidebars -->
+        <!-- Page Content -->
+        <div id="content" class="page">
+
+            <!-- Toolbar -->
+            <div id="toolbar" class="primary-color">
+                <div class="open-left" id="open-left" data-activates="slide-out-left">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <span class="title">SHIVAM ITCS</span>
+                <span class="title"></span>
+
+                
+
+                <div style="width:150px;" class="open-right" id="open-right1" data-activates="slide-out1">
+                    <a style="font-size:18px; color:#fff; text-decoration:none;" href="#/Logout"> Log Out  <i class="fa fa-sign-out"></i></a>
+
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div data-ng-view="">
+                </div>
+
+            </div>
+
+        </div> <!-- End of Page Content -->
+
+    </div>
+    <!--<div class="jumbotron">
+        <div class="container">
+            <div class="page-header text-center">
+                <h1>AngularJS Authentication</h1>
+            </div>
+        </div>
+    </div>-->
+    <!-- 3rd party libraries -->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>-->
+    <script src="scripts/jquery-1.11.0.min.js"></script>
+
+    <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/moment.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/angular-local-storage.min.js"></script>
+    <script src="scripts/loading-bar.min.js"></script>
+    
+     
+    <!--<script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        appDevice.initialize();
+    </script>-->
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+
+    <script src="js/functions.js"></script>
+
+
+    <!-- Load app main script -->
+    <script src="app/app.js?v=2"></script>
+    <!-- Load services -->
+    <script src="app/services/authInterceptorService.js?v=2"></script>
+    <script src="app/services/authService.js?v=2"></script>
+    <script src="app/services/ordersService.js?v=2"></script>
+    <script src="app/services/tokensManagerService.js?v=2"></script>
+    <!-- Load controllers -->
+    <script src="app/controllers/indexController.js?v=2"></script>
+    <script src="app/controllers/homeController.js?v=2"></script>
+    <script src="app/controllers/loginController.js?v=2"></script>
+    <script src="app/controllers/signupController.js?v=2"></script>
+    <script src="app/controllers/ordersController.js?v=2"></script>
+    <script src="app/controllers/refreshController.js?v=2"></script>
+    <script src="app/controllers/tokensManagerController.js?v=2"></script>
+    <script src="app/controllers/associateController.js?v=2"></script>
+    <script src="app/controllers/SelectBillFieldsController.js"></script>
+    <script src="app/controllers/InvoiceDetailsController.js"></script>
+    <script src="app/controllers/CompanyDetailsController.js"></script>
+    <script src="app/controllers/invoiceController.js?v=2"></script>
+    <script src="app/controllers/SelectBillFieldsNewController.js"></script>
+    <script src="app/controllers/SelectFieldsController.js"></script>
+
+    <script src="js/toastr.min.js"></script>
+
+
+
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+    <script>
+        $(document).ready(function () {
+            $("span.clickable").parents('.panel').find('.panel-body').slideUp("slow");
+            $("span.clickable").addClass('Chek');
+        })
+
+
+        $(document).on('click', '.panel-heading span.clickable', function (e) {
+            var $this = $(this);
+            if (!$this.hasClass('panel-collapsed')) {
+                $this.parents('.panel').find('.panel-body').slideUp("slow");
+                $this.addClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+            } else {
+                $this.parents('.panel').find('.panel-body').slideDown("slow");
+                $this.removeClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+            }
+        })
+    </script>
+
+
+    
+</body>
+
+</html>

@@ -1,0 +1,315 @@
+﻿
+
+<div class="hidden-print">
+    <h2>All Invoices</h2>
+
+
+    <hr />
+</div>
+
+<div class="">
+  
+
+    <div ng-show="showBillDetailArea == false">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#/invoice" class="btn btn-success"> <i class="fa fa-check"></i> Create New Invoice </a>
+
+            </div>
+        </div>
+        <div class="row filtersection">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Start date </p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text"  id="from" class="form-control" ng-model="startDate" />
+                    </div>
+                    <div class="col-md-2">
+                        <p>End Date </p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="to" class="form-control" ng-model="endDate" />
+                    </div>
+
+
+
+                    <div class="col-md-3">
+
+                        <a class="btn btn-primary" ng-click="filterBillDetails()"> <i class="fa fa-filter"></i> Filter </a>
+                        <a class="btn btn-danger" ng-click="ClearFilter()"> <i class="fa fa-times"></i> Clear  </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="col-md-1">
+
+
+
+        </div>
+
+        <div class="col-md-3">
+            <input class="form-control" type="text" placeholder="Type Company ID to filter" name="name" value="" />
+        </div>-->
+        </div>
+        <div class="row well">
+
+
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Invoice Id</th>
+                            <!--<th>Paid</th>-->
+                            <th>Bill Subtotal</th>
+                            <th>Tax Applied</th>
+                            <th> Total </th>
+                            <th> Create Date </th>
+                            <th> Details </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="obj in renderingArray">
+                            <td>{{obj.invoiceNo}}</td>
+                            <!--<td>{{obj.isPaid}}</td>-->
+                            <td>{{obj.subTotal}}</td>
+                            <td>{{obj.taxapplied}}%</td>
+                            <td>{{obj.totalAmount}}</td>
+                            <td>{{obj.createddate}}</td>
+                            <td>
+                                <a class="btn btn-primary" ng-click="BillDetails(obj)"> <i class="fa fa-info-circle"></i> </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+    <div ng-show="showBillDetailArea == true">
+        <div class="row">
+            <div class="col-md-6 mobile-center">
+
+                <img style="height:100px; width:100px; display:initial" id="logodata" src="content/logo.png" alt="Alternate Text" />
+
+            </div>
+            <div class="col-md-6">
+                <div style="text-align:right" class="mobile-float pull-right mobile-center">
+                    <h4> <b> {{companyinfo.companyName}}</b></h4>
+                    <p style="margin-bottom:5px;">Phone :  {{companyinfo.contact1}}, {{companyinfo.contact2}}</p>
+                    <p>{{companyinfo.address}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="detailsection well">
+
+                    <h4>Invoice Details </h4>
+
+                    <div class="innercontent">
+                        <div>
+
+
+                            <p>Invoice Number : {{DetailBillObject.invoiceNo}}</p>
+                            <p>Invoice date :  {{DetailBillObject.invoiceDate}}</p>
+
+                            <p>{{DetailBillObject.notes}}</p>
+
+
+                        </div>
+
+                        <div ng-show="editinvoice==true">
+
+                            <textarea placeholder="Put few text regarding to Invoice" ng-model="DetailBillObject.notes" class="form-control"></textarea>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+                <div class="well detailsection">
+
+                    
+
+
+
+                    <h4> Customer details </h4>
+
+
+
+                    <div  class="innercontent">
+
+                        <div>
+                            <p> {{DetailBillObject.customer.name}}</p>
+                            <p>  {{DetailBillObject.customer.contactNumber}}</p>
+                            <p> {{DetailBillObject.address}} </p>
+                        </div>
+
+                        
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            
+        </div>
+
+
+        
+        
+
+
+
+
+        <!--<div>
+            <p>Invoice Number : {{DetailBillObject.invoiceNo}}</p>
+            <div class="pull-right">
+                <p>Customer Name : {{DetailBillObject.customer.name}}</p>
+                <p>Customer Contact : {{DetailBillObject.customer.contactNumber}}</p>
+                <p>Customer Adress : {{DetailBillObject.customer.address}}</p>
+            </div>          
+        </div>-->
+
+        <div class="well">
+
+            <h4>Invoice Summary</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th ng-repeat="head in Header">
+                            {{head.columnname}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="col in ColumnDataArray">
+                        <td ng-repeat="data in col">{{data.Value}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+
+            <table style="width:100%;">
+                <tr>
+
+                    <td width="60%"></td>  
+
+                    <td>
+                        <div class="">
+
+                            <div style="margin-bottom:0" class="row">
+                                <div class="col-md-6">
+                                    <p style="text-align: right;">Sub Total</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p> {{DetailBillObject.subTotal}} </p>
+                                </div>
+                            </div>
+                            <div style="margin-bottom:0" class="row">
+                                <div class="col-md-6">
+                                    <p style="text-align: right;">Tax%</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p> {{DetailBillObject.taxapplied}} </p>
+                                </div>
+                            </div>
+                            <div style="margin-bottom:0" class="row">
+                                <div class="col-md-6">
+                                    <p style="text-align: right;">Total</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>   {{DetailBillObject.totalAmount}} </p>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="visible-print">
+            <h3 class="termheading" style="margin-top:0;">Terms and conditions</h3>
+            <p style="white-space: pre-line; margin-top: -19px; padding-left: 11px; margin-bottom: 25px;">
+                {{companyinfo.termsNConditions}}
+            </p>
+
+        </div>
+        <!--<div>
+            <p>Sub Total : {{DetailBillObject.subTotal}}</p>
+            <p>Tax : {{DetailBillObject.taxapplied}}</p>
+            <p>Total : {{DetailBillObject.totalAmount}}</p>
+        </div>-->
+
+        <div>
+
+            <a class="btn btn-primary" ng-click="showBillDetailArea=false;" > <i class="fa fa-arrow-left"></i> Back</a>
+
+            <a onclick="window.print()" class="btn btn-warning"><i class="fa fa-print"></i> Print </a>
+        </div>
+    </div>
+
+
+</div>
+
+<style>
+    .btn {
+        padding:6px 12px;
+    }
+
+    .filtersection p
+    {
+        line-height:32px;
+    }
+
+    .col-md-2
+    {
+        padding-right:0;
+    }
+
+    .filtersection.row {
+        margin-bottom: 0;
+        background: #dcdcdc;
+        padding-top: 20px;
+    }
+
+    .filtersection .form-control
+    {
+        margin-bottom:0px;
+    }
+
+    .well
+    {
+        min-height:180px;
+    }
+</style>

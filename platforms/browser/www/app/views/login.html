@@ -1,0 +1,65 @@
+﻿<form style="display:none;" role="form">
+    <div class="row">
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+        <div class="col-md-4">
+            <h2 class="form-login-heading">Login</h2>
+            <input type="text" class="form-control" placeholder="Username" data-ng-model="loginData.userName" required autofocus>
+            <input type="password" class="form-control" placeholder="Password" data-ng-model="loginData.password" required>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" data-ng-model="loginData.useRefreshTokens"><strong> Use Refresh Tokens</strong>
+                </label>
+            </div>
+            <button class="btn btn-md btn-info btn-block" type="submit" data-ng-click="login()">Login</button>
+              <div data-ng-hide="message == ''" class="alert alert-danger">
+                {{message}}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2 class="form-login-heading">Social Logins</h2>
+            <p>Or you can login using one of the social logins bleow</p>
+            <button class="btn btn-large btn-facebook btn-block" type="button" data-ng-click="authExternalProvider('Facebook')"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
+            <button class="btn btn-large btn-google-plus btn-block" type="button" data-ng-click="authExternalProvider('Google')"><i class="fa fa-google-plus"></i> | Connect with Google+</button>
+        </div>
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+    </div>
+</form>
+
+<div id="content" class="grey-blue login">
+
+    <!-- Toolbar -->
+    <div id="toolbar" class="tool-login primary-color animated fadeindown">
+        <a href="javascript:history.back()" class="open-left">
+            <i class="fa fa-arrow-circle-left"></i>
+        </a>
+    </div>
+    <div class="login-form animated fadeinup delay-2 z-depth-1">
+
+        <h1>Login</h1>
+        <div class="input-field">
+           
+            <input id="login" type="text" class="form-control" data-ng-model="loginData.userName" required autofocus>
+            <label for="login">Username</label>
+        </div>
+       
+        <div class="input-field" style="margin-bottom:20px; margin-top:25px;">
+         
+            <input id="login-psw" type="password" class="form-control"  data-ng-model="loginData.password" required>
+            <label for="login-psw">Password</label>
+        </div>
+
+        <a data-ng-click="login()" class="waves-effect waves-light btn-large accent-color width-100 m-b-20 animated bouncein delay-4">Login</a>
+        <div data-ng-hide="message == ''" class="alert alert-danger">
+            {{message}}
+        </div>
+
+        <span>Don't have an account? <a class="primary-text" href="#/signup">Sign Up</a></span>
+
+      
+       
+    </div>
+</div>

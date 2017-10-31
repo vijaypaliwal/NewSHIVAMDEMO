@@ -154,7 +154,7 @@
 
     <div class="row hidden-xs">
         <div class="mobile-center col-md-6 ">
-            <h3 style="margin-top:0;">Invoice Details</h3>
+            <h3 style="margin-top:0;">Invoice Details 123</h3>
         </div>
         <div class="col-md-6 hidden-xs">
             <a class="btn btn-small pull-right btn-success" ng-click="AddRow()"> <i class="fa fa-plus"></i> Add New</a>
@@ -179,207 +179,207 @@
         
    
   
+    <div style="overflow-x:auto;">
+        <table class="table table-bordered invoiceprint">
+            <thead>
+                <tr>
 
-    <table class="table table-bordered invoiceprint">
-        <thead>
-            <tr>
-
-                <th ng-if="obj.active == true" ng-repeat="obj in ColumnData track by $index">
-                    {{obj.columnlabel}}
-                </th>
-                <th class="hidden-print">Remove</th>
-
-
-
-                <!--<th>
-                    Column 1
-                </th>
-                <th>
-                    Columnn 2
-                </th>
-                <th>
-                    Column 3
-                </th>
-                <th>
-                    Columns 4
-                </th>
-                <th>
-                    Column 5
-                </th>
-
-                <th>
-
-                </th>-->
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <tr ng-repeat="obj in ActiveList track by obj.id">
-                <td ng-if="object.active == true" ng-repeat="object in obj.columnData | orderBy: object.sort ">
-                    <div ng-if="object.datatype == 'string'">
-                        <input placeholder="Type here" type="text" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
-                    </div>
-                    <div ng-if="object.datatype == 'dropdown'">
-                        <select class="form-control" ng-model="object.value">
-                            <option ng-repeat="x in getCombovValues(object.combovalues) track by $index" value="{{x}}">{{x}}</option>
-                        </select>
-                    </div>
-                    <div ng-if="object.datatype == 'number'">
-                        <input placeholder="Type here" ng-change="CalculatePrice(object,obj.id)" type="number" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
-
-                    </div>
-                    <div ng-if="object.datatype == 'date'">
-                        <input placeholder="Type here" type="text" date-picker class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
-
-                    </div>
-                </td>
-                <td class="hidden-print">
-                    <a class="btn remove-btn btn-danger" ng-click="Deleterow(obj)"> <i class="fa fa-times"></i> </a>
-                </td>
-            </tr>
+                    <th ng-if="obj.active == true" ng-repeat="obj in ColumnData track by $index">
+                        {{obj.columnlabel}}
+                    </th>
+                    <th class="hidden-print">Remove</th>
 
 
 
+                    <!--<th>
+                        Column 1
+                    </th>
+                    <th>
+                        Columnn 2
+                    </th>
+                    <th>
+                        Column 3
+                    </th>
+                    <th>
+                        Columns 4
+                    </th>
+                    <th>
+                        Column 5
+                    </th>
+
+                    <th>
+
+                    </th>-->
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr ng-repeat="obj in ActiveList track by obj.id">
+                    <td ng-if="object.active == true" ng-repeat="object in obj.columnData | orderBy: object.sort ">
+                        <div ng-if="object.datatype == 'string'">
+                            <input placeholder="Type here" type="text" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                        </div>
+                        <div ng-if="object.datatype == 'dropdown'">
+                            <select class="form-control" ng-model="object.value">
+                                <option ng-repeat="x in getCombovValues(object.combovalues) track by $index" value="{{x}}">{{x}}</option>
+                            </select>
+                        </div>
+                        <div ng-if="object.datatype == 'number'">
+                            <input placeholder="Type here" ng-change="CalculatePrice(object,obj.id)" type="number" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+
+                        </div>
+                        <div ng-if="object.datatype == 'date'">
+                            <input placeholder="Type here" type="text" date-picker class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+
+                        </div>
+                    </td>
+                    <td class="hidden-print">
+                        <a class="btn remove-btn btn-danger" ng-click="Deleterow(obj)"> <i class="fa fa-times"></i> </a>
+                    </td>
+                </tr>
 
 
-            <!--<tr class="printrow" ng-repeat="_obj in Columnlist track by $index">
-                <td>
-                    <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column1" name="name" value="" />
-                </td>
-                <td>
-                    <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column2" name="name" value="" />
-
-                </td>
-
-                <td>
-                    <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column3" name="name" value="" />
-                </td>
-
-                <td>
-                    <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column4" name="name" value="" />
-                </td>
-                <td>
-                    <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column5" name="name" value="" />
-                </td>
-                <td>
-                    <a class="btn remove-btn btn-danger" ng-click="Deleterow(_obj)"> <i class="fa fa-times"></i> </a>
-                </td>
-            </tr>-->
-            <!--<tr ng-repeat="obj in productlist">
-                <td>
-                    {{obj.Column1}}
-                </td>
-                <td>
-                    {{obj.Column2}}
-                </td>
-                <td>
-                      {{obj.Column3}}
-                </td>
-                <td>
-                   {{obj.Column4}}
-                </td>
-                <td>
-                    {{obj.Column5}}
-                </td>
-            </tr>-->
-            <!--<tr>
-                <td colspan="3"></td>
-                <td align="right"><b>Sub Total</b></td>
-                <td>500</td>
-            </tr>
-            <tr>
-                <td colspan="3"></td>
-                <td align="right"><b>Service Tax</b></td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td colspan="3"></td>
-                <td align="right"><b>GST Tax</b></td>
-                <td>500</td>
-            </tr>
-
-            <tr>
-                <td colspan="3"></td>
-                <td align="right"><b>Total Amount</b></td>
-                <td>1500</td>
-            </tr>-->
-
-        </tbody>
 
 
-    </table>
+
+                <!--<tr class="printrow" ng-repeat="_obj in Columnlist track by $index">
+                    <td>
+                        <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column1" name="name" value="" />
+                    </td>
+                    <td>
+                        <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column2" name="name" value="" />
+
+                    </td>
+
+                    <td>
+                        <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column3" name="name" value="" />
+                    </td>
+
+                    <td>
+                        <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column4" name="name" value="" />
+                    </td>
+                    <td>
+                        <input placeholder="Type here" type="text" class="form-control" ng-model="_obj.Column5" name="name" value="" />
+                    </td>
+                    <td>
+                        <a class="btn remove-btn btn-danger" ng-click="Deleterow(_obj)"> <i class="fa fa-times"></i> </a>
+                    </td>
+                </tr>-->
+                <!--<tr ng-repeat="obj in productlist">
+                    <td>
+                        {{obj.Column1}}
+                    </td>
+                    <td>
+                        {{obj.Column2}}
+                    </td>
+                    <td>
+                          {{obj.Column3}}
+                    </td>
+                    <td>
+                       {{obj.Column4}}
+                    </td>
+                    <td>
+                        {{obj.Column5}}
+                    </td>
+                </tr>-->
+                <!--<tr>
+                    <td colspan="3"></td>
+                    <td align="right"><b>Sub Total</b></td>
+                    <td>500</td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td align="right"><b>Service Tax</b></td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td align="right"><b>GST Tax</b></td>
+                    <td>500</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"></td>
+                    <td align="right"><b>Total Amount</b></td>
+                    <td>1500</td>
+                </tr>-->
+
+            </tbody>
 
 
-    <div class="row">
-        <div class="col-md-8 col-xs-12">
-            
+        </table>
         </div>
 
-        <div class="col-md-4 col-xs-12">
-            <div class="print-right pull-right">
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
 
-                <div style="margin-bottom:0" class="row">
-                    <div class="col-md-6">
-                        <p style="padding-top: 10px; text-align: right;">Sub Total</p>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="number" step="any" ng-model="InvoiceData.subtotal" class="form-control" placeholder="Sub total" />
-                    </div>
-                </div>
-                <div style="margin-bottom:0" class="row">
-                    <div class="col-md-6">
-                        <p style="padding-top: 10px; text-align: right;">Tax%</p>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="number" step="any" ng-model="InvoiceData.taxapplied" class="form-control" placeholder="Tax" />
-                    </div>
-                </div>
-                <div style="margin-bottom:0" class="row">
-                    <div class="col-md-6">
-                        <p style="padding-top: 10px; text-align: right;">Total</p>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="number" step="any" ng-model="InvoiceData.totalamount" class="form-control" placeholder="Total" />
-                    </div>
-                </div>
-                <div style="margin-bottom:0" class="row">
-                    <div class="col-md-6">
-                        <p style="padding-top: 10px; text-align: right;">Paid Amount</p>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="number" step="any" ng-model="InvoiceData.paidamount" class="form-control" placeholder="paid" />
-                    </div>
-                </div>
+            </div>
 
-              
+            <div class="col-md-4 col-xs-12">
+                <div class="print-right pull-right">
 
-               
-                
-               
-                
+                    <div style="margin-bottom:0" class="row">
+                        <div class="col-md-6">
+                            <p style="padding-top: 10px; text-align: right;">Sub Total</p>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" step="any" ng-model="InvoiceData.subtotal" class="form-control" placeholder="Sub total" />
+                        </div>
+                    </div>
+                    <div style="margin-bottom:0" class="row">
+                        <div class="col-md-6">
+                            <p style="padding-top: 10px; text-align: right;">Tax%</p>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" step="any" ng-model="InvoiceData.taxapplied" class="form-control" placeholder="Tax" />
+                        </div>
+                    </div>
+                    <div style="margin-bottom:0" class="row">
+                        <div class="col-md-6">
+                            <p style="padding-top: 10px; text-align: right;">Total</p>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" step="any" ng-model="InvoiceData.totalamount" class="form-control" placeholder="Total" />
+                        </div>
+                    </div>
+                    <div style="margin-bottom:0" class="row">
+                        <div class="col-md-6">
+                            <p style="padding-top: 10px; text-align: right;">Paid Amount</p>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" step="any" ng-model="InvoiceData.paidamount" class="form-control" placeholder="paid" />
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="visible-print">
+            <h3 class="termheading" style="margin-top:0;">Terms and conditions</h3>
+            <p style="white-space: pre-line; margin-top: -19px; padding-left: 11px; margin-bottom: 25px;">
+                {{companyinfo.termsNConditions}}
+            </p>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a ng-click="postdata()" ng-disabled="CheckSaveDisabled()" class="btn btn-success"> <i class="fa fa-check"></i> Save </a>
+                <a onclick="window.print()" class="btn btn-warning"><i class="fa fa-print"></i> Print </a>
+                <a href="#/InvoiceDetails" class="btn btn-danger"> <i class="fa fa-times"></i> Cancel </a>
             </div>
         </div>
     </div>
-
-
-    
-
-    <div class="visible-print">
-        <h3 class="termheading" style="margin-top:0;">Terms and conditions</h3>
-        <p style="white-space: pre-line; margin-top: -19px; padding-left: 11px; margin-bottom: 25px;">
-            {{companyinfo.termsNConditions}}
-        </p>
-
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <a ng-click="postdata()" ng-disabled="CheckSaveDisabled()" class="btn btn-success"> <i class="fa fa-check"></i> Save </a>
-            <a onclick="window.print()" class="btn btn-warning"><i class="fa fa-print" ></i> Print </a>
-            <a href="#/InvoiceDetails"  class="btn btn-danger"> <i class="fa fa-times"></i> Cancel </a>
-        </div>
-    </div>
-</div>
 <style>
     .detailsection {
         min-height: 217px;
@@ -492,6 +492,11 @@
        float:left;
        width:100%;
    }
+
+    .invoiceprint th
+    {
+        min-width:140px;
+    }
    
   
 </style>

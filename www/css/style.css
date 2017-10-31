@@ -2452,3 +2452,44 @@ span.data-color {
 #filter .mix {
     width: 100%;
 }
+
+@media (max-width:768px) {
+   #toolbar .title {
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 56px;
+    margin-left: 0;
+    text-transform: none;
+    letter-spacing: normal;
+}
+   h2, .h2 {
+    font-size: 22px !important;
+}
+
+   h3, .h3 {
+    font-size: 20px !important;
+}
+
+ .filtersection .btn
+ {
+     margin-top:15px;
+ }
+
+ .filtersection input
+ {
+     width:95% !important;
+ }
+}
+
+.Addinvbtn
+{
+    height:40px;
+    width:40px;
+    line-height:35px !important;
+    padding:0 !important;
+    text-align:center;
+    border-radius:100% !important;
+    margin-top:12px;
+    font-size:25px !important;
+}

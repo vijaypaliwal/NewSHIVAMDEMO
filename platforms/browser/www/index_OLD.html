@@ -21,21 +21,11 @@
     <link href="css/jquery-ui.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="content/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        .teal{
-            background-color:#3F51B5 !important;
-        }
-    </style>
+
 </head>
 <body>
-    <div class="navbar navbar-default txt-middle" style="    background: #3F51B5;">
-        <h2 style="    margin: 0px auto; text-align: center; font-weight: bold; padding: 24px; color: white;">Welcome to SHIVAM INVOICE</h2>
-    </div>
-    <img style="display:none;" class="billimg" src="content/billing.jpg" />
-  
     <div class="m-scene" data-ng-controller="indexController" id="main">
         <!-- Main Container -->
-        
         <!-- Sidebars -->
         <!-- Right Sidebar -->
         <ul id="slide-out" class="side-nav">
@@ -231,7 +221,7 @@
                 
 
                 <div style="width:150px;" class="open-right" id="open-right1" data-activates="slide-out1">
-                    <a style="font-size:16px; color:#fff; text-decoration:none;" href="#/Logout"> Log Out  <i style="font-size:18px;" class="fa fa-sign-out"></i></a>
+                    <a style="font-size:18px; color:#fff; text-decoration:none;" href="#/Logout"> Log Out  <i class="fa fa-sign-out"></i></a>
 
                 </div>
             </div>
@@ -265,7 +255,11 @@
     <script src="scripts/angular-local-storage.min.js"></script>
     <script src="scripts/loading-bar.min.js"></script>
     
-
+     
+    <!--<script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        appDevice.initialize();
+    </script>-->
     <script src="js/jquery.swipebox.min.js"></script>
     <script src="js/materialize.min.js"></script>
 

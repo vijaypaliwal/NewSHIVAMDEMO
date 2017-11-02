@@ -162,10 +162,10 @@ blockquote {
     color: #f44336 !important;
 }
 .primary-color {
-    background-color: #f44336 !important;
+    background-color: #3F51B5 !important;
 }
 .primary-border {
-    border-color: #f44336 !important;
+    border-color: #3F51B5 !important;
 }
 .grey-blue {
     background-color: #f1f4f5;
@@ -731,7 +731,7 @@ footer.page-footer {
 
 .side-nav li:hover,
 .side-nav li.active {
-    background-color: #f44336 ;
+    background-color: #3F51B5 ;
 }
 .side-nav .no-child:hover,
 .side-nav .active .collapsible-header,
@@ -935,7 +935,7 @@ input[type=number]:focus:not([readonly])+label,
 input[type=search]:focus:not([readonly])+label,
 textarea.materialize-textarea:focus:not([readonly])+label,
 .input-field .prefix.active {
-    color: #f44336;
+    color: #008080;
 }
 input[type=text]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]),
@@ -948,8 +948,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #f44336;
-    box-shadow: 0 1px 0 0 #f44336;
+    border-bottom: 1px solid #008080;
+    box-shadow: 0 1px 0 0 #008080;
 }
 [type="radio"]:checked+label:after {
     border: 2px solid #f44336;
@@ -2451,4 +2451,49 @@ span.data-color {
 }
 #filter .mix {
     width: 100%;
+}
+
+@media (max-width:768px) {
+   #toolbar .title {
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 56px;
+    margin-left: 0;
+    text-transform: none;
+    letter-spacing: normal;
+}
+   h2, .h2 {
+  font-size: 20px !important;
+    margin-top: 7px !important;
+}
+   hr
+   {
+       margin-top:13px !important;
+       margin-bottom:13px !important;
+   }
+
+   h3, .h3 {
+    font-size: 20px !important;
+}
+
+ .filtersection .btn
+ {
+     margin-top:15px;
+ }
+
+ .filtersection input
+ {
+     width:95% !important;
+ }
+}
+.Addinvbtn {
+    height: 32px;
+    width: 32px;
+    line-height: 26px !important;
+    padding: 0 !important;
+    text-align: center;
+    border-radius: 100% !important;
+    margin-top: 3px;
+    font-size: 18px !important;
 }

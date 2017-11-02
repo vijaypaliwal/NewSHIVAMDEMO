@@ -32,10 +32,11 @@
                 <div class="notification notification-success" >
                     <a class="close-notification no-smoothState"><i class="ion-android-close"></i></a>
                     <p class="green head" ng-click="Showlist('string')">String Fields <span>{{GetCount('string')}}</span></p>
+                    <a ng-click="AddNewStringField()" class="btn btn-success adbtn"> <i class="fa fa-plus"></i>   </a>
                     <div class="innersection" ng-class="{'boxSelected':currentDatatype=='string'}">
                         <p>You have {{GetCount('string')}} string fields</p>
 
-                        <a ng-click="AddNewStringField()" class="btn btn-success"> <i class="fa fa-plus"></i> Add  </a>
+                      
 
                         <a ng-click="Showlist('string')" class="btn btn-info pull-right"> <i class="fa fa-info"></i> View  </a>
 
@@ -46,11 +47,14 @@
                 <div class="notification notification-warning" >
                     <a class="close-notification no-smoothState"><i class="ion-android-close"></i></a>
                     <p class="orange head" ng-click="Showlist('number')">Number Fields <span>{{GetCount('number')}}</span></p>
+
+                    <a ng-click="AddNewNumberField()" class="btn btn-success adbtn"> <i class="fa fa-plus"></i> </a>
+
                     <div class="innersection" ng-class="{'boxSelected':currentDatatype=='number'}">
                         <p>You have {{GetCount('number')}} number fields</p>
 
 
-                        <a ng-click="AddNewNumberField()" class="btn btn-success"> <i class="fa fa-plus"></i> Add  </a>
+                      
 
                         <a ng-click="Showlist('number')" class="btn btn-info pull-right"> <i class="fa fa-info"></i> View  </a>
                     </div>
@@ -62,11 +66,12 @@
                 <div class="notification notification-danger" >
                     <a class="close-notification no-smoothState"><i class="ion-android-close"></i></a>
                     <p class="purple head" ng-click="Showlist('date')">Date Fields <span>{{GetCount('date')}}</span></p>
+                    <a ng-click="AddNewDateField()" class="btn btn-success adbtn"> <i class="fa fa-plus"></i>   </a>
                     <div class="innersection" ng-class="{'boxSelected':currentDatatype=='date'}">
                         <p>You have {{GetCount('date')}} date fields</p>
 
 
-                        <a ng-click="AddNewDateField()" class="btn btn-success"> <i class="fa fa-plus"></i> Add  </a>
+                       
 
                         <a ng-click="Showlist('date')" class="btn btn-info pull-right"> <i class="fa fa-info"></i> View  </a>
                     </div>
@@ -75,11 +80,12 @@
             <div class="col-md-3">
                 <div class="notification notification-info" >
                     <a class="close-notification no-smoothState"><i class="ion-android-close"></i></a>
-                    <p class="pink head" ng-click="Showlist('dropdown')">DropDown Fields <span>{{GetCount('dropdown')}}</span></p>
-                    <div class="innersection" ng-class="{'boxSelected':currentDatatype=='dropdown'}">
+                    <p class="blue head" ng-click="Showlist('dropdown')">DropDown Fields <span>{{GetCount('dropdown')}}</span></p>
+                    <a ng-click="AddNewDropDownField()" class="btn btn-success adbtn"> <i class="fa fa-plus"></i> </a>
+                     <div class="innersection" ng-class="{'boxSelected':currentDatatype=='dropdown'}">
                         <p>You have {{GetCount('dropdown')}} dropdown fields</p>
 
-                        <a ng-click="AddNewDropDownField()" class="btn btn-success"> <i class="fa fa-plus"></i> Add  </a>
+                       
 
                         <a ng-click="Showlist('dropdown')" class="btn btn-info pull-right"> <i class="fa fa-info"></i> View  </a>
                     </div>
@@ -95,46 +101,53 @@
         <h4 ng-show="currentDatatype=='date'">All date Fields</h4>
         <h4 ng-show="currentDatatype=='dropdown'">All string Fields</h4>
 
+        <div style="overflow-x:auto">
+            <table class="table table-hover table-responsive table-stripped detailtable">
+                <thead>
+                    <tr>
+                        <th>Column Name</th>
+                  
+                   
+                    
+                        <th ng-if="currentDatatype == 'dropdown'">Combo Values</th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="data.datatype==currentDatatype" ng-repeat="data in GetData track by $index">
+                        <td>
+                        
+                            <h4>{{data.columnname}}</h4> 
+                         
+                       
+                        </td>
+                   
+                    
+                    
+                        <td ng-if="currentDatatype == 'dropdown'">
+                            <select class="form-control">
+                                <option ng-repeat="x in getCombovValues(data.combovalues) track by $index" value="{{x}}">{{x}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div ng-if="data.isEditable==true">
 
-        <table class="table table-hover table-responsive table-stripped">
-            <thead>
-                <tr>
-                    <th>Column Name</th>
-                    <th>Data Type</th>
-                    <th>Default Value</th>
-                    <th>Column Label</th>
-                    <th ng-if="currentDatatype == 'dropdown'">Combo Values</th>
-                    <th>
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-if="data.datatype==currentDatatype" ng-repeat="data in GetData track by $index">
-                    <td>{{data.columnname}}</td>
-                    <td>{{data.datatype}}</td>
-                    <td>{{data.defaultvalue}}</td>
-                    <td>{{data.columnlabel}}</td>
-                    <td ng-if="currentDatatype == 'dropdown'">
-                        <select class="form-control">
-                            <option ng-repeat="x in getCombovValues(data.combovalues) track by $index" value="{{x}}">{{x}}</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div ng-if="data.isEditable==true">
 
+                                <input style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" value="Remove" />
+                                <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" type="button" class="btn btn-primary" ng-click="ChangeStatus(data.id,data,true)" value="Activate" />
+                                <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" type="button" class="btn btn-warning" ng-click="ChangeStatus(data.id,data,false)" value="Deactivate" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
 
-                            <input type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" value="Remove" />
-                            <input ng-if="data.active == false" type="button" class="btn btn-primary" ng-click="ChangeStatus(data.id,data,true)" value="Activate" />
-                            <input ng-if="data.active == true" type="button" class="btn btn-warning" ng-click="ChangeStatus(data.id,data,false)" value="Deactivate" />
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-
-            </tfoot>
-        </table>
+                </tfoot>
+            </table>
+        </div>
+        
     </div>
    
         
@@ -149,104 +162,120 @@
     <div class="well">
         <div class="row" ng-if="ShowStringFields==true">
             <h4>Create String Field</h4>
-            <div class="col-md-12" ng-if="AddStringField == true">
 
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <th>Name</th>
-                        <th>Default Value</th>
-                        <th>Sort Order</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.columnname" /></td>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.DefaultValue" /></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.SortOrder" /></td>
-                        <td>
-                            <input class="btn btn-primary" ng-click="saveField(ViewModel,'string')" ng-disabled="ViewModel.columnname==''" type="button" value="Save" />
-                            <input class="btn btn-primary" ng-click="GoBack()" type="button" value="Back" />
-                        </td>
-                    </tr>
-                </table>
+            <br />
+            <div class="" ng-if="AddStringField == true">
+
+                <div class="input-field">
+                  
+                    <input class="form-control" type="text" ng-model="ViewModel.columnname" />
+                    <label>Name</label>
+                </div>
+
+                <br />
+
+                <div class="input-field">
+                   
+                    <input class="form-control" type="text" ng-model="ViewModel.DefaultValue" />
+                    <label>Default value</label>
+                </div>
+
+                <br />
+
+                <div class="input-field">
+                  
+                    <input class="form-control" type="number" ng-model="ViewModel.SortOrder" />
+                    <label>Sort Order</label>
+                </div>
+                <br />
+
+                <button class="btn btn-success" ng-click="saveField(ViewModel,'string')" ng-disabled="ViewModel.columnname==''" type="button"> <i class="fa fa-check"></i> Save</button>
+                <button class="btn btn-danger" ng-click="GoBack()" type="button"> <i class="fa fa-arrow-left"></i> Back</button>
+                
             </div>
         </div>
         <div class="row " ng-if="ShowNumberFields==true">
 
             <h4>Create Number Field</h4>
 
-            <div class="col-md-12" ng-if="AddNumberField == true">
+            <br />
 
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <th>Name</th>
-                        <th>Default Value</th>
-                        <th>Sort Order</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.columnname" /></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.DefaultValue" /></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.SortOrder" /></td>
-                        <td>
-                            <input class="btn btn-primary" ng-click="saveField(ViewModel,'number')" ng-disabled="ViewModel.columnname==''" type="button" value="Save" />
-                            <input class="btn btn-primary" ng-click="GoBack()" type="button" value="Back" />
-                        </td>
-                    </tr>
-                </table>
+            <div class="" ng-if="AddNumberField == true">
+
+                <div class="input-field">
+                    <input class="form-control" type="text" ng-model="ViewModel.columnname" />
+                    <label>Name</label>   
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="number" ng-model="ViewModel.DefaultValue" />
+                    <label>Default value</label>
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="number" ng-model="ViewModel.SortOrder" />
+                    <label>Sort order</label>   
+                </div>
+                <br />
+                <button class="btn btn-success" ng-click="saveField(ViewModel,'number')" ng-disabled="ViewModel.columnname==''" type="button"> <i class="fa fa-check"></i> Save </button>
+                <button class="btn btn-danger" ng-click="GoBack()" type="button" > <i class="fa fa-arrow-left"></i> Back </button>
+
+
+                
             </div>
         </div>
         <div class="row " ng-if="ShowDateFields==true">
             <h4>Create Date Field</h4>
-            <div class="col-md-12" ng-if="AddDateField == true">
+            <br />
+            <div class="" ng-if="AddDateField == true">
 
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <th>Name</th>
-                        <th>Default Value</th>
-                        <th>Sort Order</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.columnname" /></td>
-                        <td><input class="form-control" type="text" date-picker ng-model="ViewModel.DefaultValue" /></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.SortOrder" /></td>
-                        <td>
-                            <input class="btn btn-primary" ng-click="saveField(ViewModel,'date')" ng-disabled="ViewModel.columnname==''" type="button" value="Save" />
-                            <input class="btn btn-primary" ng-click="GoBack()" type="button" value="Back" />
-                        </td>
-                    </tr>
-                </table>
+                <div class="input-field">
+                    <input class="form-control" type="text" ng-model="ViewModel.columnname" />
+                    <label>Name</label>
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="text" date-picker ng-model="ViewModel.DefaultValue" />
+                    <label>Default value</label>
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="number" ng-model="ViewModel.SortOrder" />
+                    <label>Sort Order</label>
+                </div>
+                <br />
+
+                <button class="btn btn-success" ng-click="saveField(ViewModel,'date')" ng-disabled="ViewModel.columnname==''" type="button" > <i class="fa fa-check"></i> Save  </button>
+                <button class="btn btn-danger" ng-click="GoBack()" type="button"> <i class="fa fa-arrow-left"></i> Back </button>
+              
             </div>
         </div>
         <div class="row " ng-if="ShowDropDownFields==true">
             <h4>Create Dropdown Field</h4>
-            <div class="col-md-12" ng-if="AddDropDownField == true">
 
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <th>Name</th>
-                        <th>DropDown Value</th>
-                        <th>Sort Order</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.columnname" /></td>
-                        <td><textarea class="form-control" ng-model="ViewModel.Combovalues"></textarea></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.SortOrder" /></td>
-                        <td>
-                            <input class="btn btn-primary" ng-click="saveField(ViewModel,'dropdown')" ng-disabled="ViewModel.columnname==''" type="button" value="Save" />
-                            <input class="btn btn-primary" ng-click="GoBack()" type="button" value="Back" />
-                        </td>
-                    </tr>
-                </table>
+            <br />
+            <div class="" ng-if="AddDropDownField == true">
+
+                <div class="input-field">
+                    <input class="form-control" type="text" ng-model="ViewModel.columnname" />
+                    <label>Name</label>   
+                </div>
+                <br />
+                <div class="input-field">
+                    <textarea class="form-control" ng-model="ViewModel.Combovalues"></textarea>
+                    <label>DropDown Value</label>
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="number" ng-model="ViewModel.SortOrder" />
+                    <label>Sort Order</label>
+                </div>
+                <br />
+
+
+                <button class="btn btn-success" ng-click="saveField(ViewModel,'dropdown')" ng-disabled="ViewModel.columnname==''" type="button"> <i class="fa fa-check"></i> Save </button>
+                <button class="btn btn-danger" ng-click="GoBack()" type="button"> <i class="fa fa-arrow-left"></i> Back </button>
+                
             </div>
         </div>
 
@@ -272,17 +301,39 @@
         .head span {
             float: right;
             border-radius: 100%;
-            padding: 5px;
-            padding-left: 9px;
-            padding-right: 9px;
+            padding: 3px;
+            padding-left: 8px;
+            padding-right: 8px;
             background: #fff;
-            color: #000;
+            color: #fff;
+            position: absolute;
+            top: -7px;
+            background: #f44336;
+            margin-left: -6px;
+            border: 1px solid #f44336;
+            left:0;
         }
         
         
          .notification {
             background: #fff;
         }
+
+    .innersection
+    {
+        display:none;
+    }
+
+    .adbtn {
+        position: absolute;
+        right: 9px;
+        top: 3px;
+        border-radius: 100%;
+        background: #fff;
+        color: #3c9a5f;
+        border: transparent;
+        line-height: 24px;
+    }
     
     
      .notification-success .head {
@@ -305,4 +356,22 @@
             border:none !important;
             box-shadow:none !important;
         }
+
+    .detailtable th
+    {
+        min-width:100px;
+    }
+
+    .notification
+    {
+        margin-bottom:12px;
+    }
+
+    textarea.form-control {
+        border-left: transparent;
+        border-top: transparent;
+        border-right: transparent;
+        background:transparent;
+        box-shadow:none !important;
+    }
 </style>

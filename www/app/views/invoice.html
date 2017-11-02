@@ -154,7 +154,7 @@
 
     <div class="row hidden-xs">
         <div class="mobile-center col-md-6 ">
-            <h3 style="margin-top:0;">Invoice Details 123</h3>
+            <h3 style="margin-top:0;">Invoice Details</h3>
         </div>
         <div class="col-md-6 hidden-xs">
             <a class="btn btn-small pull-right btn-success" ng-click="AddRow()"> <i class="fa fa-plus"></i> Add New</a>
@@ -175,11 +175,42 @@
 
 
 
-   
+    <div style="background: #008080" ng-repeat="obj in ActiveList track by obj.id" >
+
+        <h4 style="padding:7px; padding-bottom:1px; color:#fff" >Fill below Info <a class="pull-right" ng-click="Deleterow(obj)"> <i style="color:#fff" class="fa fa-times"></i> </a> </h4>
+        <div class="well mobile-form">
+
+            <div class="input-field" ng-if="object.active == true" ng-repeat="object in obj.columnData | orderBy: object.sort ">
+                <div ng-if="object.datatype == 'string'">
+                    <input type="text" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                    <label> {{object.columnlabel}} </label>
+                </div>
+                <div ng-if="object.datatype == 'dropdown'">
+                    <select class="form-control" ng-model="object.value">
+                        <option ng-repeat="x in getCombovValues(object.combovalues) track by $index" value="{{x}}">{{x}}</option>
+                    </select>
+                    <label> {{object.columnlabel}} </label>
+                </div>
+                <div ng-if="object.datatype == 'number'">
+                    <input ng-change="CalculatePrice(object,obj.id)" type="number" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                    <label> {{object.columnlabel}} </label>
+                </div>
+                <div ng-if="object.datatype == 'date'">
+                    <input type="text" date-picker class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                    <label> {{object.columnlabel}} </label>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
         
    
   
-    <div style="overflow-x:auto;">
+    <div style="overflow-x:auto; display:none;">
         <table class="table table-bordered invoiceprint">
             <thead>
                 <tr>
@@ -321,7 +352,7 @@
 
                     <div style="margin-bottom:0" class="row">
                         <div class="col-md-6">
-                            <p style="padding-top: 10px; text-align: right;">Sub Total</p>
+                            <p style="padding-top: 10px; ">Sub Total</p>
                         </div>
                         <div class="col-md-6">
                             <input type="number" step="any" ng-model="InvoiceData.subtotal" class="form-control" placeholder="Sub total" />
@@ -329,7 +360,7 @@
                     </div>
                     <div style="margin-bottom:0" class="row">
                         <div class="col-md-6">
-                            <p style="padding-top: 10px; text-align: right;">Tax%</p>
+                            <p style="padding-top: 10px; ">Tax%</p>
                         </div>
                         <div class="col-md-6">
                             <input type="number" step="any" ng-model="InvoiceData.taxapplied" class="form-control" placeholder="Tax" />
@@ -337,7 +368,7 @@
                     </div>
                     <div style="margin-bottom:0" class="row">
                         <div class="col-md-6">
-                            <p style="padding-top: 10px; text-align: right;">Total</p>
+                            <p style="padding-top: 10px; ">Total</p>
                         </div>
                         <div class="col-md-6">
                             <input type="number" step="any" ng-model="InvoiceData.totalamount" class="form-control" placeholder="Total" />
@@ -345,7 +376,7 @@
                     </div>
                     <div style="margin-bottom:0" class="row">
                         <div class="col-md-6">
-                            <p style="padding-top: 10px; text-align: right;">Paid Amount</p>
+                            <p style="padding-top: 10px; ">Paid Amount</p>
                         </div>
                         <div class="col-md-6">
                             <input type="number" step="any" ng-model="InvoiceData.paidamount" class="form-control" placeholder="paid" />
@@ -497,7 +528,17 @@
     {
         min-width:140px;
     }
-   
+
+
+    .mobile-form
+    {
+        padding:10px;
+    }
+
+    .mobile-form .input-field
+    {
+        padding-bottom:10px;
+    }
   
 </style>
 

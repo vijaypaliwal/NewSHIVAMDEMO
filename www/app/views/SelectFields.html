@@ -106,9 +106,9 @@
                 <thead>
                     <tr>
                         <th>Column Name</th>
-                        <th>Data Type</th>
-                        <th>Default Value</th>
-                        <th>Column Label</th>
+                  
+                   
+                    
                         <th ng-if="currentDatatype == 'dropdown'">Combo Values</th>
                         <th>
                             Action
@@ -117,10 +117,15 @@
                 </thead>
                 <tbody>
                     <tr ng-if="data.datatype==currentDatatype" ng-repeat="data in GetData track by $index">
-                        <td>{{data.columnname}}</td>
-                        <td>{{data.datatype}}</td>
-                        <td>{{data.defaultvalue}}</td>
-                        <td>{{data.columnlabel}}</td>
+                        <td>
+                        
+                            <h4>{{data.columnname}}</h4> 
+                         
+                       
+                        </td>
+                   
+                    
+                    
                         <td ng-if="currentDatatype == 'dropdown'">
                             <select class="form-control">
                                 <option ng-repeat="x in getCombovValues(data.combovalues) track by $index" value="{{x}}">{{x}}</option>
@@ -130,9 +135,9 @@
                             <div ng-if="data.isEditable==true">
 
 
-                                <input type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" value="Remove" />
-                                <input ng-if="data.active == false" type="button" class="btn btn-primary" ng-click="ChangeStatus(data.id,data,true)" value="Activate" />
-                                <input ng-if="data.active == true" type="button" class="btn btn-warning" ng-click="ChangeStatus(data.id,data,false)" value="Deactivate" />
+                                <input style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" value="Remove" />
+                                <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" type="button" class="btn btn-primary" ng-click="ChangeStatus(data.id,data,true)" value="Activate" />
+                                <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" type="button" class="btn btn-warning" ng-click="ChangeStatus(data.id,data,false)" value="Deactivate" />
                             </div>
                         </td>
                     </tr>
@@ -157,106 +162,120 @@
     <div class="well">
         <div class="row" ng-if="ShowStringFields==true">
             <h4>Create String Field</h4>
+
+            <br />
             <div class="" ng-if="AddStringField == true">
 
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <th>Name</th>
-                        <th>Default Value</th>
-                        <th>Sort Order</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.columnname" /></td>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.DefaultValue" /></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.SortOrder" /></td>
-                        <td>
-                            <input class="btn btn-primary" ng-click="saveField(ViewModel,'string')" ng-disabled="ViewModel.columnname==''" type="button" value="Save" />
-                            <input class="btn btn-primary" ng-click="GoBack()" type="button" value="Back" />
-                        </td>
-                    </tr>
-                </table>
+                <div class="input-field">
+                  
+                    <input class="form-control" type="text" ng-model="ViewModel.columnname" />
+                    <label>Name</label>
+                </div>
+
+                <br />
+
+                <div class="input-field">
+                   
+                    <input class="form-control" type="text" ng-model="ViewModel.DefaultValue" />
+                    <label>Default value</label>
+                </div>
+
+                <br />
+
+                <div class="input-field">
+                  
+                    <input class="form-control" type="number" ng-model="ViewModel.SortOrder" />
+                    <label>Sort Order</label>
+                </div>
+                <br />
+
+                <button class="btn btn-success" ng-click="saveField(ViewModel,'string')" ng-disabled="ViewModel.columnname==''" type="button"> <i class="fa fa-check"></i> Save</button>
+                <button class="btn btn-danger" ng-click="GoBack()" type="button"> <i class="fa fa-arrow-left"></i> Back</button>
+                
             </div>
         </div>
         <div class="row " ng-if="ShowNumberFields==true">
 
             <h4>Create Number Field</h4>
 
+            <br />
+
             <div class="" ng-if="AddNumberField == true">
 
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <th>Name</th>
-                        <th>Default Value</th>
-                        <th>Sort Order</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.columnname" /></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.DefaultValue" /></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.SortOrder" /></td>
-                        <td>
-                            <input class="btn btn-primary" ng-click="saveField(ViewModel,'number')" ng-disabled="ViewModel.columnname==''" type="button" value="Save" />
-                            <input class="btn btn-primary" ng-click="GoBack()" type="button" value="Back" />
-                        </td>
-                    </tr>
-                </table>
+                <div class="input-field">
+                    <input class="form-control" type="text" ng-model="ViewModel.columnname" />
+                    <label>Name</label>   
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="number" ng-model="ViewModel.DefaultValue" />
+                    <label>Default value</label>
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="number" ng-model="ViewModel.SortOrder" />
+                    <label>Sort order</label>   
+                </div>
+                <br />
+                <button class="btn btn-success" ng-click="saveField(ViewModel,'number')" ng-disabled="ViewModel.columnname==''" type="button"> <i class="fa fa-check"></i> Save </button>
+                <button class="btn btn-danger" ng-click="GoBack()" type="button" > <i class="fa fa-arrow-left"></i> Back </button>
+
+
+                
             </div>
         </div>
         <div class="row " ng-if="ShowDateFields==true">
             <h4>Create Date Field</h4>
+            <br />
             <div class="" ng-if="AddDateField == true">
 
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <th>Name</th>
-                        <th>Default Value</th>
-                        <th>Sort Order</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.columnname" /></td>
-                        <td><input class="form-control" type="text" date-picker ng-model="ViewModel.DefaultValue" /></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.SortOrder" /></td>
-                        <td>
-                            <input class="btn btn-primary" ng-click="saveField(ViewModel,'date')" ng-disabled="ViewModel.columnname==''" type="button" value="Save" />
-                            <input class="btn btn-primary" ng-click="GoBack()" type="button" value="Back" />
-                        </td>
-                    </tr>
-                </table>
+                <div class="input-field">
+                    <input class="form-control" type="text" ng-model="ViewModel.columnname" />
+                    <label>Name</label>
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="text" date-picker ng-model="ViewModel.DefaultValue" />
+                    <label>Default value</label>
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="number" ng-model="ViewModel.SortOrder" />
+                    <label>Sort Order</label>
+                </div>
+                <br />
+
+                <button class="btn btn-success" ng-click="saveField(ViewModel,'date')" ng-disabled="ViewModel.columnname==''" type="button" > <i class="fa fa-check"></i> Save  </button>
+                <button class="btn btn-danger" ng-click="GoBack()" type="button"> <i class="fa fa-arrow-left"></i> Back </button>
+              
             </div>
         </div>
         <div class="row " ng-if="ShowDropDownFields==true">
             <h4>Create Dropdown Field</h4>
+
+            <br />
             <div class="" ng-if="AddDropDownField == true">
 
+                <div class="input-field">
+                    <input class="form-control" type="text" ng-model="ViewModel.columnname" />
+                    <label>Name</label>   
+                </div>
+                <br />
+                <div class="input-field">
+                    <textarea class="form-control" ng-model="ViewModel.Combovalues"></textarea>
+                    <label>DropDown Value</label>
+                </div>
+                <br />
+                <div class="input-field">
+                    <input class="form-control" type="number" ng-model="ViewModel.SortOrder" />
+                    <label>Sort Order</label>
+                </div>
+                <br />
 
-              
-                <table class="table table-bordered table-responsive">
-                    <tr>
-                        <th>Name</th>
-                        <th>DropDown Value</th>
-                        <th>Sort Order</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" ng-model="ViewModel.columnname" /></td>
-                        <td><textarea class="form-control" ng-model="ViewModel.Combovalues"></textarea></td>
-                        <td><input class="form-control" type="number" ng-model="ViewModel.SortOrder" /></td>
-                        <td>
-                            <input class="btn btn-primary" ng-click="saveField(ViewModel,'dropdown')" ng-disabled="ViewModel.columnname==''" type="button" value="Save" />
-                            <input class="btn btn-primary" ng-click="GoBack()" type="button" value="Back" />
-                        </td>
-                    </tr>
-                </table>
+
+                <button class="btn btn-success" ng-click="saveField(ViewModel,'dropdown')" ng-disabled="ViewModel.columnname==''" type="button"> <i class="fa fa-check"></i> Save </button>
+                <button class="btn btn-danger" ng-click="GoBack()" type="button"> <i class="fa fa-arrow-left"></i> Back </button>
+                
             </div>
         </div>
 
@@ -346,5 +365,13 @@
     .notification
     {
         margin-bottom:12px;
+    }
+
+    textarea.form-control {
+        border-left: transparent;
+        border-top: transparent;
+        border-right: transparent;
+        background:transparent;
+        box-shadow:none !important;
     }
 </style>

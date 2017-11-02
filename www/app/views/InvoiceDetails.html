@@ -2,7 +2,7 @@
 
 <div class="hidden-print">
 
-    <div class="row">
+    <div style="margin-bottom:3px;" ng-show="showBillDetailArea == false" class="row">
         <div class="col-xs-6">
             <h2>All Invoices</h2>
         </div>
@@ -10,9 +10,6 @@
             <a ng-show="showBillDetailArea == false" href="#/invoice" class="btn btn-success Addinvbtn">+  </a>
         </div>
     </div>
-
-  
-
 
 
 </div>
@@ -68,25 +65,7 @@
                     Invoice ID
                 </div>
                 <div class="col-xs-6">
-                    {{obj.invoiceNo}} <a style="font-size:12px;" ng-click="BillDetails(obj)"> Detail </a>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-6">
-                    Subtotal
-                </div>
-                <div class="col-xs-6">
-                    {{obj.subTotal}}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-6">
-                    Applied Tax
-                </div>
-                <div class="col-xs-6">
-                    {{obj.taxapplied}}%
+                    {{obj.invoiceNo}} <a style="font-size:12px; float:right;" ng-click="BillDetails(obj)"> Detail </a>
                 </div>
             </div>
 
@@ -158,21 +137,21 @@
 
 
     <div ng-show="showBillDetailArea == true">
-        <div class="row">
-            <div class="col-md-6 mobile-center">
+        <div style="margin-bottom:5px;" class="row">
+            <div class="col-md-6 col-xs-4">
 
-                <img style="height:100px; width:100px; display:initial" id="logodata" src="content/logo.png" alt="Alternate Text" />
+                <img style="height:85px; width:90px; display:initial; margin-top:4px;" id="logodata" src="content/logo.png" alt="Alternate Text" />
 
             </div>
-            <div class="col-md-6">
-                <div style="text-align:right" class="mobile-float pull-right mobile-center">
+            <div class="col-md-6 col-xs-8">
+                <div >
                     <h4> <b> {{companyinfo.companyName}}</b></h4>
-                    <p style="margin-bottom:5px;">Phone :  {{companyinfo.contact1}}, {{companyinfo.contact2}}</p>
+                    <p style="margin-bottom:5px;">{{companyinfo.contact1}}, {{companyinfo.contact2}}</p>
                     <p>{{companyinfo.address}}</p>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div style="margin-bottom:5px;" class="row">
             <div class="col-md-6">
                 <div class="detailsection well">
 
@@ -253,8 +232,8 @@
 
         <div class="well">
 
-            <h4>Invoice Summary</h4>
-            <table class="table table-bordered">
+            <h4 style="margin-top:0;" class="mobile-center">Invoice Summary</h4>
+            <table class="table table-bordered hidden-xs">
                 <thead>
                     <tr>
                         <th ng-repeat="head in Header">
@@ -272,7 +251,25 @@
                 </tfoot>
             </table>
 
-            <table style="width:100%;">
+
+            <div class="summary">
+                <div ng-repeat="col in ColumnDataArray" class="row">
+                    <div class="col-xs-6">
+                        <p style="text-align:right;" ng-repeat="head in Header">
+                            {{head.columnname}}
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p ng-repeat="data in col">{{data.Value}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <table style="width:100%; background:#ccc;">
                 <tr>
 
                  
@@ -280,17 +277,17 @@
                     <td>
                         <div class="">
 
-                            <div style="margin-bottom:0" class="row">
+                            <div style="margin-bottom:0; padding-top:7px;" class="row">
                                 <div class="col-xs-6">
-                                    <p style="text-align: right;">Sub Total</p>
+                                    <p style="text-align: right;"> <b> Sub Total </b></p>
                                 </div>
                                 <div class="col-xs-6">
-                                    <p> {{DetailBillObject.subTotal}} </p>
+                                    <p> <b> {{DetailBillObject.subTotal}} </b></p>
                                 </div>
                             </div>
                             <div style="margin-bottom:0" class="row">
                                 <div class="col-xs-6">
-                                    <p style="text-align: right;">Tax%</p>
+                                    <p style="text-align: right;"><b> Tax% </b></p>
                                 </div>
                                 <div class="col-xs-6">
                                     <p> {{DetailBillObject.taxapplied}} </p>
@@ -298,20 +295,12 @@
                             </div>
                             <div style="margin-bottom:0" class="row">
                                 <div class="col-xs-6">
-                                    <p style="text-align: right;">Total</p>
+                                    <p style="text-align: right;"> <b> Total </b></p>
                                 </div>
                                 <div class="col-xs-6">
-                                    <p>   {{DetailBillObject.totalAmount}} </p>
+                                    <p>  <b> {{DetailBillObject.totalAmount}} </b> </p>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
                         </div>
                     </td>
                 </tr>
@@ -371,11 +360,32 @@
 
     .well
     {
-        min-height:180px;
+      
+        padding:10px;
+        margin-bottom:7px;
+        
     }
 
-    .detail-btn
+        .well .row
+        {
+            margin-bottom:3px;
+        }
+        
+        
+         .detail-btn {
+        }
+
+    .filtersection p
     {
-
+        margin-bottom:0;
     }
+
+    .summary .row:nth-child(odd) {
+        background-color: #eaeaea;
+    }
+
+    .summary .row:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
 </style>

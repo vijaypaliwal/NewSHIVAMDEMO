@@ -1,24 +1,26 @@
 ﻿
 
 <div class="hidden-print">
-    <h2>All Invoices</h2>
+
+    <div style="margin-bottom:3px;" ng-show="showBillDetailArea == false" class="row">
+        <div class="col-xs-6">
+            <h2>All Invoices</h2>
+        </div>
+        <div style="text-align:right" class="col-xs-6">
+            <a ng-show="showBillDetailArea == false" href="#/invoice" class="btn btn-success Addinvbtn">+  </a>
+        </div>
+    </div>
 
 
-    <hr />
 </div>
 
 <div class="">
   
 
     <div ng-show="showBillDetailArea == false">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#/invoice" class="btn btn-success"> <i class="fa fa-check"></i> Create New Invoice </a>
-
-            </div>
-        </div>
-        <div class="row filtersection">
-            <div class="col-md-12">
+        
+        <div class="filtersection">
+         
                 <div class="row">
                     <div class="col-md-2">
                         <p>Start date </p>
@@ -35,14 +37,14 @@
 
 
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
 
                         <a class="btn btn-primary" ng-click="filterBillDetails()"> <i class="fa fa-filter"></i> Filter </a>
                         <a class="btn btn-danger" ng-click="ClearFilter()"> <i class="fa fa-times"></i> Clear  </a>
 
                     </div>
                 </div>
-            </div>
+        
 
             <!--<div class="col-md-1">
 
@@ -54,15 +56,53 @@
             <input class="form-control" type="text" placeholder="Type Company ID to filter" name="name" value="" />
         </div>-->
         </div>
-        <div class="row well">
+
+
+        <div ng-repeat="obj in renderingArray" class="well">
+
+            <div class="row">
+                <div class="col-xs-6">
+                    Invoice ID
+                </div>
+                <div class="col-xs-6">
+                    {{obj.invoiceNo}} <a style="font-size:12px; float:right;" ng-click="BillDetails(obj)"> Detail </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">Amount</div>
+                <div class="col-xs-6">
+                    {{obj.totalAmount}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    Created Date
+                </div>
+                <div class="col-xs-6">
+                    {{obj.createddate}}
+                </div>
+            </div>
+
+            
+
+        </div>
+
+
+        <div class="row hidden-xs">
 
 
             <div class="col-md-12">
+
+
+
+
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Invoice Id</th>
-                            <!--<th>Paid</th>-->
+                           
                             <th>Bill Subtotal</th>
                             <th>Tax Applied</th>
                             <th> Total </th>
@@ -74,7 +114,6 @@
                     <tbody>
                         <tr ng-repeat="obj in renderingArray">
                             <td>{{obj.invoiceNo}}</td>
-                            <!--<td>{{obj.isPaid}}</td>-->
                             <td>{{obj.subTotal}}</td>
                             <td>{{obj.taxapplied}}%</td>
                             <td>{{obj.totalAmount}}</td>
@@ -98,21 +137,21 @@
 
 
     <div ng-show="showBillDetailArea == true">
-        <div class="row">
-            <div class="col-md-6 mobile-center">
+        <div style="margin-bottom:5px;" class="row">
+            <div class="col-md-6 col-xs-4">
 
-                <img style="height:100px; width:100px; display:initial" id="logodata" src="content/logo.png" alt="Alternate Text" />
+                <img style="height:85px; width:90px; display:initial; margin-top:4px;" id="logodata" src="content/logo.png" alt="Alternate Text" />
 
             </div>
-            <div class="col-md-6">
-                <div style="text-align:right" class="mobile-float pull-right mobile-center">
+            <div class="col-md-6 col-xs-8">
+                <div >
                     <h4> <b> {{companyinfo.companyName}}</b></h4>
-                    <p style="margin-bottom:5px;">Phone :  {{companyinfo.contact1}}, {{companyinfo.contact2}}</p>
+                    <p style="margin-bottom:5px;">{{companyinfo.contact1}}, {{companyinfo.contact2}}</p>
                     <p>{{companyinfo.address}}</p>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div style="margin-bottom:5px;" class="row">
             <div class="col-md-6">
                 <div class="detailsection well">
 
@@ -193,8 +232,8 @@
 
         <div class="well">
 
-            <h4>Invoice Summary</h4>
-            <table class="table table-bordered">
+            <h4 style="margin-top:0;" class="mobile-center">Invoice Summary</h4>
+            <table class="table table-bordered hidden-xs">
                 <thead>
                     <tr>
                         <th ng-repeat="head in Header">
@@ -212,46 +251,56 @@
                 </tfoot>
             </table>
 
-            <table style="width:100%;">
+
+            <div class="summary">
+                <div ng-repeat="col in ColumnDataArray" class="row">
+                    <div class="col-xs-6">
+                        <p style="text-align:right;" ng-repeat="head in Header">
+                            {{head.columnname}}
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p ng-repeat="data in col">{{data.Value}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <table style="width:100%; background:#ccc;">
                 <tr>
 
-                    <td width="60%"></td>  
+                 
 
                     <td>
                         <div class="">
 
-                            <div style="margin-bottom:0" class="row">
-                                <div class="col-md-6">
-                                    <p style="text-align: right;">Sub Total</p>
+                            <div style="margin-bottom:0; padding-top:7px;" class="row">
+                                <div class="col-xs-6">
+                                    <p style="text-align: right;"> <b> Sub Total </b></p>
                                 </div>
-                                <div class="col-md-6">
-                                    <p> {{DetailBillObject.subTotal}} </p>
+                                <div class="col-xs-6">
+                                    <p> <b> {{DetailBillObject.subTotal}} </b></p>
                                 </div>
                             </div>
                             <div style="margin-bottom:0" class="row">
-                                <div class="col-md-6">
-                                    <p style="text-align: right;">Tax%</p>
+                                <div class="col-xs-6">
+                                    <p style="text-align: right;"><b> Tax% </b></p>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-xs-6">
                                     <p> {{DetailBillObject.taxapplied}} </p>
                                 </div>
                             </div>
                             <div style="margin-bottom:0" class="row">
-                                <div class="col-md-6">
-                                    <p style="text-align: right;">Total</p>
+                                <div class="col-xs-6">
+                                    <p style="text-align: right;"> <b> Total </b></p>
                                 </div>
-                                <div class="col-md-6">
-                                    <p>   {{DetailBillObject.totalAmount}} </p>
+                                <div class="col-xs-6">
+                                    <p>  <b> {{DetailBillObject.totalAmount}} </b> </p>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
                         </div>
                     </td>
                 </tr>
@@ -297,10 +346,11 @@
         padding-right:0;
     }
 
-    .filtersection.row {
+    .filtersection {
         margin-bottom: 0;
         background: #dcdcdc;
         padding-top: 20px;
+        padding-bottom:1px;
     }
 
     .filtersection .form-control
@@ -310,6 +360,32 @@
 
     .well
     {
-        min-height:180px;
+      
+        padding:10px;
+        margin-bottom:7px;
+        
     }
+
+        .well .row
+        {
+            margin-bottom:3px;
+        }
+        
+        
+         .detail-btn {
+        }
+
+    .filtersection p
+    {
+        margin-bottom:0;
+    }
+
+    .summary .row:nth-child(odd) {
+        background-color: #eaeaea;
+    }
+
+    .summary .row:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
 </style>

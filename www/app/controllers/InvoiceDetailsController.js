@@ -59,7 +59,29 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         });
     }
 
+    $scope.PrintData=function()
+    {
+        try {
 
+            pdf.htmlToPDF({
+                data: "<html> <h1>  Hello World  </h1> </html>",
+                documentSize: "A4",
+                landscape: "portrait",
+                type: "base64"
+            }, alert("success"), alert("fail to download"));
+
+            pdf.htmlToPDF({
+                data: $("#BillSection").html(),
+                documentSize: "A4",
+                landscape: "portrait",
+                type: "base64"
+            }, alert("success 1"), alert("fail to download 1"));
+
+        } catch (e) {
+
+        }
+       
+    }
     $scope.getCompanyData = function () {
         var authData = localStorageService.get('authorizationData');
         if (authData) {

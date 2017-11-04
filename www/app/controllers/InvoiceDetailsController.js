@@ -35,8 +35,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
                 $scope.$apply();
 
 
-                for (var i = 0 ; i < $scope.InvoiceData.length ; i++)
-                {
+                for (var i = 0 ; i < $scope.InvoiceData.length ; i++) {
                     debugger;
                     $scope.InvoiceData[i].invoiceDetail = JSON.parse($scope.InvoiceData[i].invoiceDetail);
                     $scope.InvoiceData[i].createddate = moment($scope.InvoiceData[i].createddate).format("YYYY-MM-DD");
@@ -47,7 +46,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
                 console.log("Data after parsing");
                 console.log($scope.InvoiceData);
-                
+
                 //$scope.Showlist($scope.currentDatatype);
                 //alert("Successful");
             },
@@ -60,17 +59,30 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
     }
 
 
-    $scope.PrintData=function()
-    {
-        alert("print Start");
-        var page = location.href;
+    $scope.PrintData = function () {
 
-        cordova.plugins.printer.print(page, 'Document.html');
+        try {
+            alert("print Start");
 
-        alert("print Start 2");
-        var page2 = '<h1>Hello world Document</h1>';
+            var type = "text/html";
+            var title = "download.html";
+            var fileContent = $("#BillPrint").html();
 
-        cordova.plugins.printer.print(page2, 'Document2.html');
+            window.plugins.PrintPlugin.print("Simple Print", function () {
+                alert('success 1')
+            }, function () {
+                alert('fail 1')
+            }, "", type, title);
+            window.plugins.PrintPlugin.print(fileContent, function () {
+                alert('success 2')
+            }, function () {
+                alert('fail 2')
+            }, "", type, title);
+        }
+        catch (err) {
+            alert(err.message);
+        }
+
     }
 
     $scope.getCompanyData = function () {
@@ -125,8 +137,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
         $scope.DetailBillObject = billObject;
 
-        for (var i = 0; i < billObject.invoiceDetail.length ; i++)
-        {
+        for (var i = 0; i < billObject.invoiceDetail.length ; i++) {
             $scope.ColumnDataArray.push(billObject.invoiceDetail[i].columnData);
         }
 
@@ -153,8 +164,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         for (var i = 0 ; i < $scope.InvoiceData.length ; i++) {
             var datevalue = new Date($scope.InvoiceData[i].createddate);
 
-            if (datevalue >= startDate && datevalue <= endDate)
-            {
+            if (datevalue >= startDate && datevalue <= endDate) {
                 $scope.renderingArray.push($scope.InvoiceData[i]);
             }
         }
@@ -162,19 +172,19 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         console.log("newArray");
         console.log($scope.renderingArray);
 
-     
+
     }
 
 
     $("#from, #to").datepicker({
-       
+
         onSelect: function (selectedDate) {
             if (this.id == 'from') {
                 var dateMin = $('#from').datepicker("getDate");
                 var rMin = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + 1); // Min Date = Selected + 1d
                 var rMax = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + 31); // Max Date = Selected + 31d
                 $('#to').datepicker("option", "minDate", rMin);
-              //  $('#to').datepicker("option", "maxDate", rMax);
+                //  $('#to').datepicker("option", "maxDate", rMax);
             }
 
             $(this).trigger("input");

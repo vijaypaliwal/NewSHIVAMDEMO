@@ -92,6 +92,7 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
         
         var _objectData = angular.copy($scope.LocalBillObject);
         $scope.ActiveList.push(_objectData);
+        $scope.CalculatePrice(_objectData, _objectData.id);
         $scope.$apply();
         console.log($scope.ActiveList);
         $("#myModal").modal("hide");
@@ -101,6 +102,7 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
     {
         _objindex = $scope.ActiveList.indexOf(obj);
         $scope.LocalBillObject = angular.copy(obj);
+        $scope.CalculatePrice(obj, obj.id);
         $("#myModalEdit").modal("show");
     }
 
@@ -125,6 +127,8 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
         var index = $scope.ActiveList.indexOf(item);
         $scope.ActiveList.splice(index, 1);
         $scope.$apply();
+
+        $scope.calculateSubtotal();
     }
 
 
@@ -276,6 +280,8 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
         var _qty = 0;
         var _up = 0;
         var _p = 0;
+
+        
 
         for (var i = 0; i < $scope.ActiveList.length; i++) {
             var _id = $scope.ActiveList[i].id;

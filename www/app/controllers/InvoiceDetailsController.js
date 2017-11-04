@@ -60,6 +60,14 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
     }
 
 
+    $scope.PrintData=function()
+    {
+        alert("print Start");
+        var page = document.getElementById('BillPrint');
+
+        cordova.plugins.printer.print(page, 'Document.html');
+    }
+
     $scope.getCompanyData = function () {
         var authData = localStorageService.get('authorizationData');
         if (authData) {

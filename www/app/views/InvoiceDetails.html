@@ -14,47 +14,47 @@
 
 </div>
 
-<div class="">
-  
+<div id="BillPrint">
+
 
     <div ng-show="showBillDetailArea == false">
-        
+
         <div class="filtersection">
-         
-                <div class="row">
-                    <div class="col-md-2">
-                        <p>Start date </p>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text"  id="from" class="form-control" ng-model="startDate" />
-                    </div>
-                    <div class="col-md-2">
-                        <p>End Date </p>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" id="to" class="form-control" ng-model="endDate" />
-                    </div>
 
-
-
-                    <div class="col-md-4">
-
-                        <a class="btn btn-primary" ng-click="filterBillDetails()"> <i class="fa fa-filter"></i> Filter </a>
-                        <a class="btn btn-danger" ng-click="ClearFilter()"> <i class="fa fa-times"></i> Clear  </a>
-
-                    </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>Start date </p>
                 </div>
-        
+                <div class="col-md-2">
+                    <input type="text" id="from" class="form-control" ng-model="startDate" />
+                </div>
+                <div class="col-md-2">
+                    <p>End Date </p>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" id="to" class="form-control" ng-model="endDate" />
+                </div>
+
+
+
+                <div class="col-md-4">
+
+                    <a class="btn btn-primary" ng-click="filterBillDetails()"> <i class="fa fa-filter"></i> Filter </a>
+                    <a class="btn btn-danger" ng-click="ClearFilter()"> <i class="fa fa-times"></i> Clear  </a>
+
+                </div>
+            </div>
+
 
             <!--<div class="col-md-1">
 
 
 
-        </div>
+            </div>
 
-        <div class="col-md-3">
-            <input class="form-control" type="text" placeholder="Type Company ID to filter" name="name" value="" />
-        </div>-->
+            <div class="col-md-3">
+                <input class="form-control" type="text" placeholder="Type Company ID to filter" name="name" value="" />
+            </div>-->
         </div>
 
 
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            
+
 
         </div>
 
@@ -102,7 +102,7 @@
                     <thead>
                         <tr>
                             <th>Invoice Id</th>
-                           
+
                             <th>Bill Subtotal</th>
                             <th>Tax Applied</th>
                             <th> Total </th>
@@ -144,7 +144,7 @@
 
             </div>
             <div class="col-md-6 col-xs-8">
-                <div >
+                <div>
                     <h4> <b> {{companyinfo.companyName}}</b></h4>
                     <p style="margin-bottom:5px;">{{companyinfo.contact1}}, {{companyinfo.contact2}}</p>
                     <p>{{companyinfo.address}}</p>
@@ -185,7 +185,7 @@
             <div class="col-md-6">
                 <div class="well detailsection">
 
-                    
+
 
 
 
@@ -193,7 +193,7 @@
 
 
 
-                    <div  class="innercontent">
+                    <div class="innercontent">
 
                         <div>
                             <p> {{DetailBillObject.customer.name}}</p>
@@ -201,7 +201,7 @@
                             <p> {{DetailBillObject.address}} </p>
                         </div>
 
-                        
+
 
                     </div>
 
@@ -211,12 +211,12 @@
             </div>
 
 
-            
+
         </div>
 
 
-        
-        
+
+
 
 
 
@@ -227,7 +227,7 @@
                 <p>Customer Name : {{DetailBillObject.customer.name}}</p>
                 <p>Customer Contact : {{DetailBillObject.customer.contactNumber}}</p>
                 <p>Customer Adress : {{DetailBillObject.customer.address}}</p>
-            </div>          
+            </div>
         </div>-->
 
         <div class="well">
@@ -272,7 +272,7 @@
             <table style="width:100%; background:#ccc;">
                 <tr>
 
-                 
+
 
                     <td>
                         <div class="">
@@ -322,9 +322,9 @@
 
         <div>
 
-            <a class="btn btn-primary" ng-click="showBillDetailArea=false;" > <i class="fa fa-arrow-left"></i> Back</a>
+            <a class="btn btn-primary" ng-click="showBillDetailArea=false;"> <i class="fa fa-arrow-left"></i> Back</a>
 
-            <a onclick="window.print()" class="btn btn-warning"><i class="fa fa-print"></i> Print </a>
+            <a ng-click="PrintData()" class="btn btn-warning"><i class="fa fa-print"></i> Print </a>
         </div>
     </div>
 

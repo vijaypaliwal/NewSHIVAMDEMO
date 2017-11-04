@@ -35,6 +35,7 @@ app.controller('SelectFieldsController', ['$scope', 'localStorageService', funct
     $scope.Showlist = function (dataType)
     {
         $scope.currentDatatype = dataType;
+      
         $scope.$apply();
     }
 
@@ -181,6 +182,26 @@ app.controller('SelectFieldsController', ['$scope', 'localStorageService', funct
             success: function () {
                 $scope.currentDatatype = type;
                 toastr.success("Field Created Successsfully");
+
+                var _id = "#firstDivData"
+                switch (type) {
+                    case "string":
+                        _id = "#firstDivData"
+                        break;
+                    case "number":
+                        _id = "#SecondDiv";
+                        break;
+                    case "date":
+                        _id = "#ThirdDiv";
+                        break;
+                    case "dropdown":
+                        _id = "#FourthDiv";
+                        break;
+                    default:
+                        _id = "#firstDivData"
+
+                }
+                Toggle(_id);
                 init();
             },
             error: function (jqXHR) {
@@ -224,6 +245,7 @@ app.controller('SelectFieldsController', ['$scope', 'localStorageService', funct
 
                 $scope.$apply()
                 $scope.Showlist($scope.currentDatatype);
+
                 //alert("Successful");
             },
             error: function (jqXHR) {

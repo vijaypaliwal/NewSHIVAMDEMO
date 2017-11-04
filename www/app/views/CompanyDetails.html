@@ -108,10 +108,83 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a ng-click="saveinfo()" ng-disabled="companyinfo.companyName=='' || companyinfo.registrationNo==''" class="btn btn-primary"> <i class="fa fa-check"></i> Save </a>
+        <a ng-click="saveinfo()" ng-if="isSAving==false" ng-disabled="companyinfo.companyName=='' || companyinfo.registrationNo==''" class="btn btn-primary"> <i class="fa fa-check"></i> Save </a>
+        <a ng-disabled="true" ng-if="isSAving==true" class="btn btn-primary"> <i class="fa fa-check fa-spin"></i> Save </a>
         <a class="btn btn-danger"> <i class="fa fa-times"></i> Cancel </a>
     </div>
 </div>
+
+
+<div id="overlay">
+    <div class="loaderDiv">
+        <div class="row">
+            <img src="../../loader.gif" />
+            <!--<div class="loader"></div>-->
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    #overlay {
+        position: fixed; /* Sit on top of the page content */
+        display: none; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.2); /* Black background with opacity */
+        z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+        cursor: pointer; /* Add a pointer on hover */
+    }
+
+    .loaderDiv {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 1000;
+    }
+
+
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+
+
+
+
+
 
 <script>
     function readURL(input) {

@@ -1,6 +1,8 @@
 ﻿'use strict';
 app.controller('invoiceController', ['$scope', 'localStorageService', '$location', function ($scope, localStorageService, $location) {
 
+    $("#overlay").hide();
+    $scope.isPostingData = false;
 
     $scope.customercollapse = false;
     $scope.invoicecollapse = false;
@@ -40,6 +42,7 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
     $scope.ColumnObj = { Id: 0, Column1: "", Column2: "", Column3: "", Column4: "", Column5: "" };
     var _obj = { Id: 0, Column1: "", Column2: "", Column3: "", Column4: "", Column5: "" };
 
+    $scope.LocalBillObject = {};
 
     function CalculateTax() {
         if ($.trim($scope.InvoiceData.taxapplied) != "") {
@@ -75,14 +78,42 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
         $scope.DeleteVariable = $scope.DeleteVariable + 1;
 
 
-        $scope.ActiveList.push({ id: randomString(5, '0123456789'), columnData: angular.copy($scope.ColumnData) });
+        //$scope.ActiveList.push({ id: randomString(5, '0123456789'), columnData: angular.copy($scope.ColumnData) });
 
+        
+
+        $scope.LocalBillObject = { id: randomString(5, '0123456789'), columnData: angular.copy($scope.ColumnData)};
+        $("#myModal").modal("show");
         $scope.$apply();
     }
 
 
+    $scope.AddInvoiceItem = function () {
+        
+        var _objectData = angular.copy($scope.LocalBillObject);
+        $scope.ActiveList.push(_objectData);
+        $scope.$apply();
+        console.log($scope.ActiveList);
+        $("#myModal").modal("hide");
+    }
+    var _objindex = -1;
+    $scope.Editrow=function(obj)
+    {
+        _objindex = $scope.ActiveList.indexOf(obj);
+        $scope.LocalBillObject = angular.copy(obj);
+        $("#myModalEdit").modal("show");
+    }
+
+    $scope.UpdateInvoiceItem=function()
+    {
+        $scope.ActiveList[_objindex] = $scope.LocalBillObject;
+
+        $scope.$apply();
+        $("#myModalEdit").modal("hide");
+    }
+
+
     $scope.Deleterow = function (item) {
-        debugger;
         //var index = parseInt(i);
         //$scope.ActiveList.forEach(function (object, i) {
         //    if (object.id.id == item.id.id)
@@ -176,13 +207,19 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
             }
         });
     }
+
+
     function randomString(length, chars) {
         var result = '';
         for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
         return result;
     }
+
+
     $scope.postdata = function () {
 
+        $scope.isPostingData = true;
+        $("#overlay").show();
         var authData = localStorageService.get('authorizationData');
         if (authData) {
             $scope.InvoiceData.userid = authData.userid;
@@ -196,8 +233,11 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
             contentType: "application/json",
             processData: false,
             success: function () {
-                toastr.success("invoice created success fully");
+                $scope.isPostingData = false;
+                $("#overlay").hide();
 
+                toastr.success("invoice created success fully");
+                $scope.$apply();
             },
             error: function (jqXHR) {
                 $("#divError").show('fade');
@@ -268,6 +308,7 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
         // $scope.Columnlist.push($scope.PrintObj);
         $scope.getCompanyData();
         $scope.getColumnData();
+
     };
     Init();
 

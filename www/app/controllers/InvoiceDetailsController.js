@@ -35,7 +35,8 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
                 $scope.$apply();
 
 
-                for (var i = 0 ; i < $scope.InvoiceData.length ; i++) {
+                for (var i = 0 ; i < $scope.InvoiceData.length ; i++)
+                {
                     debugger;
                     $scope.InvoiceData[i].invoiceDetail = JSON.parse($scope.InvoiceData[i].invoiceDetail);
                     $scope.InvoiceData[i].createddate = moment($scope.InvoiceData[i].createddate).format("YYYY-MM-DD");
@@ -46,7 +47,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
                 console.log("Data after parsing");
                 console.log($scope.InvoiceData);
-
+                
                 //$scope.Showlist($scope.currentDatatype);
                 //alert("Successful");
             },
@@ -58,57 +59,6 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         });
     }
 
-    function CheckPrinter()
-    {
-        try {
-            window.plugins.PrintPDF.isPrintingAvailable(function (isAvailable) {
-               alert('printing is available: ' + isAvailable);
-            });
-        } catch (e) {
-            alert(e.message);
-        }
-    }
-
-    CheckPrinter();
-    $scope.PrintData = function () {
-
-        try {
-            alert("print Start");
-
-            var encodedString = 'base64encodedStringHere';
-            window.plugins.PrintPDF.print({
-                data: encodedString,
-                type: 'Data',
-                title: 'Print Document',
-                success: function () {
-                  alert('success 1');
-                },
-                error: function (data) {
-                    data = JSON.parse(data);
-                    alert('failed: ' + data.error);
-                }
-            });
-
-           var encodedString1 = btoa($("#BillPrint").html());
-            window.plugins.PrintPDF.print({
-                data: encodedString1,
-                type: 'Data',
-                title: 'Print Document',
-                success: function () {
-                    alert('success 2');
-                },
-                error: function (data) {
-                    data = JSON.parse(data);
-                    alert('failed 2: ' + data.error);
-                }
-            });
-            
-        }
-        catch (err) {
-            alert(err.message);
-        }
-
-    }
 
     $scope.getCompanyData = function () {
         var authData = localStorageService.get('authorizationData');
@@ -162,7 +112,8 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
         $scope.DetailBillObject = billObject;
 
-        for (var i = 0; i < billObject.invoiceDetail.length ; i++) {
+        for (var i = 0; i < billObject.invoiceDetail.length ; i++)
+        {
             $scope.ColumnDataArray.push(billObject.invoiceDetail[i].columnData);
         }
 
@@ -189,7 +140,8 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         for (var i = 0 ; i < $scope.InvoiceData.length ; i++) {
             var datevalue = new Date($scope.InvoiceData[i].createddate);
 
-            if (datevalue >= startDate && datevalue <= endDate) {
+            if (datevalue >= startDate && datevalue <= endDate)
+            {
                 $scope.renderingArray.push($scope.InvoiceData[i]);
             }
         }
@@ -197,19 +149,19 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         console.log("newArray");
         console.log($scope.renderingArray);
 
-
+     
     }
 
 
     $("#from, #to").datepicker({
-
+       
         onSelect: function (selectedDate) {
             if (this.id == 'from') {
                 var dateMin = $('#from').datepicker("getDate");
                 var rMin = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + 1); // Min Date = Selected + 1d
                 var rMax = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + 31); // Max Date = Selected + 31d
                 $('#to').datepicker("option", "minDate", rMin);
-                //  $('#to').datepicker("option", "maxDate", rMax);
+              //  $('#to').datepicker("option", "maxDate", rMax);
             }
 
             $(this).trigger("input");

@@ -1,6 +1,9 @@
 ﻿'use strict';
 
 app.controller('CompanyDetailsController', ['$scope', 'localStorageService', function ($scope, localStorageService) {
+    $scope.isSAving = false;
+
+    $("#overlay").hide();
 
 
     $scope.companyinfo = { userid: "", companyName: "", registrationNo: "", contact1: "", contact2: "", address: "", notes: "", imagePath: "", imageData: null, bgColor: "", termsNConditions: "", footerText: "" }
@@ -102,6 +105,11 @@ app.controller('CompanyDetailsController', ['$scope', 'localStorageService', fun
         $("#file").trigger("click");
     });
     $scope.saveinfo = function () {
+
+        $scope.isSAving = true;
+
+        $("#overlay").show();
+
         var authData = localStorageService.get('authorizationData');
         if (authData) {
             $scope.userid = authData.userid;
@@ -116,7 +124,10 @@ app.controller('CompanyDetailsController', ['$scope', 'localStorageService', fun
             processData: false,
             success: function (response) {
                 $scope.$apply();
+
+                $("#overlay").hide();
                 toastr["success"]("Company Created Successsfully");
+                $scope.isSAving = false;
                 window.location.href = '#/SelectFields';
             },
             error: function (jqXHR) {

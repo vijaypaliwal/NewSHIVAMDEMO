@@ -175,42 +175,13 @@
 
 
 
-    <div style="background: #008080" ng-repeat="obj in ActiveList track by obj.id" >
-
-        <h4 style="padding:7px; padding-bottom:1px; color:#fff" >Fill below Info <a class="pull-right" ng-click="Deleterow(obj)"> <i style="color:#fff" class="fa fa-times"></i> </a> </h4>
-        <div class="well mobile-form">
-
-            <div class="input-field" ng-if="object.active == true" ng-repeat="object in obj.columnData | orderBy: object.sort ">
-                <div ng-if="object.datatype == 'string'">
-                    <input type="text" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
-                    <label> {{object.columnlabel}} </label>
-                </div>
-                <div ng-if="object.datatype == 'dropdown'">
-                    <select class="form-control" ng-model="object.value">
-                        <option ng-repeat="x in getCombovValues(object.combovalues) track by $index" value="{{x}}">{{x}}</option>
-                    </select>
-                    <label> {{object.columnlabel}} </label>
-                </div>
-                <div ng-if="object.datatype == 'number'">
-                    <input ng-change="CalculatePrice(object,obj.id)" type="number" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
-                    <label> {{object.columnlabel}} </label>
-                </div>
-                <div ng-if="object.datatype == 'date'">
-                    <input type="text" date-picker class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
-                    <label> {{object.columnlabel}} </label>
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
+    
 
 
         
    
   
-    <div style="overflow-x:auto; display:none;">
+    <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
         <table class="table table-bordered invoiceprint">
             <thead>
                 <tr>
@@ -248,7 +219,7 @@
 
                 <tr ng-repeat="obj in ActiveList track by obj.id">
                     <td ng-if="object.active == true" ng-repeat="object in obj.columnData | orderBy: object.sort ">
-                        <div ng-if="object.datatype == 'string'">
+                        <!--<div ng-if="object.datatype == 'string'">
                             <input placeholder="Type here" type="text" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
                         </div>
                         <div ng-if="object.datatype == 'dropdown'">
@@ -263,9 +234,14 @@
                         <div ng-if="object.datatype == 'date'">
                             <input placeholder="Type here" type="text" date-picker class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
 
-                        </div>
+                        </div>-->
+
+                        <label>
+                            {{object.value}}
+                        </label>
                     </td>
                     <td class="hidden-print">
+                        <a style="display:none" class="btn remove-btn btn-warning" ng-click="Editrow(obj)"> <i class="fa fa-pencil"></i> </a>
                         <a class="btn remove-btn btn-danger" ng-click="Deleterow(obj)"> <i class="fa fa-times"></i> </a>
                     </td>
                 </tr>
@@ -382,20 +358,93 @@
                             <input type="number" step="any" ng-model="InvoiceData.paidamount" class="form-control" placeholder="paid" />
                         </div>
                     </div>
-
-
-
-
-
-
-
                 </div>
             </div>
         </div>
 
 
+    
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="">
+
+            <!-- Modal content-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Fill Form</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input-field"  ng-if="object.active == true" ng-repeat="object in LocalBillObject.columnData | orderBy: object.sort ">
+                        <div ng-if="object.datatype == 'string'">
+                            <input type="text" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                            <label> {{object.columnlabel}} </label>
+                        </div>
+                        <div ng-if="object.datatype == 'dropdown'">
+                            <select class="form-control" ng-model="object.value">
+                                <option ng-repeat="x in getCombovValues(object.combovalues) track by $index" value="{{x}}">{{x}}</option>
+                            </select>
+                            <label> {{object.columnlabel}} </label>
+                        </div>
+                        <div ng-if="object.datatype == 'number'">
+                            <input ng-change="CalculatePrice(object,obj.id)" type="number" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                            <label> {{object.columnlabel}} </label>
+                        </div>
+                        <div ng-if="object.datatype == 'date'">
+                            <input type="text" date-picker class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                            <label> {{object.columnlabel}} </label>
+                        </div>
 
 
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="AddInvoiceItem()" > <i class="fa fa-plus"></i> Add item</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="fa fa-times"></i> Close</button>
+                </div>
+
+        </div>
+    </div>
+
+    <div id="myModalEdit" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-field" ng-if="object.active == true" ng-repeat="object in LocalBillObject.columnData | orderBy: object.sort ">
+                    <div ng-if="object.datatype == 'string'">
+                        <input type="text" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                        <label> {{object.columnlabel}} </label>
+                    </div>
+                    <div ng-if="object.datatype == 'dropdown'">
+                        <select class="form-control" ng-model="object.value">
+                            <option ng-repeat="x in getCombovValues(object.combovalues) track by $index" value="{{x}}">{{x}}</option>
+                        </select>
+                        <label> {{object.columnlabel}} </label>
+                    </div>
+                    <div ng-if="object.datatype == 'number'">
+                        <input ng-change="CalculatePrice(object,obj.id)" type="number" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                        <label> {{object.columnlabel}} </label>
+                    </div>
+                    <div ng-if="object.datatype == 'date'">
+                        <input type="text" date-picker class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
+                        <label> {{object.columnlabel}} </label>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="UpdateInvoiceItem()">Edit item</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
         <div class="visible-print">
             <h3 class="termheading" style="margin-top:0;">Terms and conditions</h3>
             <p style="white-space: pre-line; margin-top: -19px; padding-left: 11px; margin-bottom: 25px;">
@@ -405,12 +454,86 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a ng-click="postdata()" ng-disabled="CheckSaveDisabled()" class="btn btn-success"> <i class="fa fa-check"></i> Save </a>
+                <a ng-click="postdata()" ng-if="isPostingData == false" ng-disabled="CheckSaveDisabled()" class="btn btn-success"> <i class="fa fa-check"></i> Save </a>
+                <a ng-disabled="true" ng-if="isPostingData == true" class="btn btn-success"> <i class="fa fa-check fa-spin"></i> Save </a>
                 <a onclick="window.print()" class="btn btn-warning"><i class="fa fa-print"></i> Print </a>
                 <a href="#/InvoiceDetails" class="btn btn-danger"> <i class="fa fa-times"></i> Cancel </a>
             </div>
         </div>
+    <div id="overlay">
+        <div class="loaderDiv">
+            <div class="row">
+                <img src="../../loader.gif" />
+                <!--<div class="loader"></div>-->
+            </div>
+        </div>
     </div>
+
+
+
+
+
+    </div>
+
+
+<style>
+    #overlay {
+        position: fixed; /* Sit on top of the page content */
+        display: none; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.2); /* Black background with opacity */
+        z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+        cursor: pointer; /* Add a pointer on hover */
+    }
+
+
+    .loaderDiv {
+        position: fixed;
+        top: 40%;
+        left: 48%;
+        z-index: 1000;
+    }
+
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+
+
+
+
 <style>
     .detailsection {
         min-height: 217px;
@@ -538,6 +661,15 @@
     .mobile-form .input-field
     {
         padding-bottom:10px;
+    }
+
+    .modal
+    {
+        margin:0;
+        width:100%;
+        top:0;
+        bottom:0;
+        max-height:100%;
     }
   
 </style>

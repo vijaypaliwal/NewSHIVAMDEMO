@@ -61,6 +61,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
     $scope.PrintData=function()
     {
+        alert("print start")
         try {
 
             pdf.htmlToPDF({

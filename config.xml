@@ -63,7 +63,7 @@
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-vibration" />
-    <plugin name="com-badrit-printplugin" />
+    <plugin name="cordova-plugin-print-pdf" />
   
 
   <!-- Third party plugins -->

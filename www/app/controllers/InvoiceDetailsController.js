@@ -58,26 +58,51 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         });
     }
 
+    function CheckPrinter()
+    {
+        try {
+            window.plugins.PrintPDF.isPrintingAvailable(function (isAvailable) {
+               alert('printing is available: ' + isAvailable);
+            });
+        } catch (e) {
+            alert(e.message);
+        }
+    }
 
+    CheckPrinter();
     $scope.PrintData = function () {
 
         try {
             alert("print Start");
 
-            var type = "text/html";
-            var title = "download.html";
-            var fileContent = $("#BillPrint").html();
+            var encodedString = 'base64encodedStringHere';
+            window.plugins.PrintPDF.print({
+                data: encodedString,
+                type: 'Data',
+                title: 'Print Document',
+                success: function () {
+                  alert('success 1');
+                },
+                error: function (data) {
+                    data = JSON.parse(data);
+                    alert('failed: ' + data.error);
+                }
+            });
 
-            window.plugins.PrintPlugin.print("Simple Print", function () {
-                alert('success 1')
-            }, function () {
-                alert('fail 1')
-            }, "", type, title);
-            window.plugins.PrintPlugin.print(fileContent, function () {
-                alert('success 2')
-            }, function () {
-                alert('fail 2')
-            }, "", type, title);
+           var encodedString1 = btoa($("#BillPrint").html());
+            window.plugins.PrintPDF.print({
+                data: encodedString1,
+                type: 'Data',
+                title: 'Print Document',
+                success: function () {
+                    alert('success 2');
+                },
+                error: function (data) {
+                    data = JSON.parse(data);
+                    alert('failed 2: ' + data.error);
+                }
+            });
+            
         }
         catch (err) {
             alert(err.message);

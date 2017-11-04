@@ -63,9 +63,14 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
     $scope.PrintData=function()
     {
         alert("print Start");
-        var page = document.getElementById('BillPrint');
+        var page = location.href;
 
         cordova.plugins.printer.print(page, 'Document.html');
+
+        alert("print Start 2");
+        var page2 = '<h1>Hello world Document</h1>';
+
+        cordova.plugins.printer.print(page2, 'Document2.html');
     }
 
     $scope.getCompanyData = function () {

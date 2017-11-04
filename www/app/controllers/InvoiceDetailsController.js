@@ -35,8 +35,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
                 $scope.$apply();
 
 
-                for (var i = 0 ; i < $scope.InvoiceData.length ; i++)
-                {
+                for (var i = 0 ; i < $scope.InvoiceData.length ; i++) {
                     debugger;
                     $scope.InvoiceData[i].invoiceDetail = JSON.parse($scope.InvoiceData[i].invoiceDetail);
                     $scope.InvoiceData[i].createddate = moment($scope.InvoiceData[i].createddate).format("YYYY-MM-DD");
@@ -47,7 +46,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
                 console.log("Data after parsing");
                 console.log($scope.InvoiceData);
-                
+
                 //$scope.Showlist($scope.currentDatatype);
                 //alert("Successful");
             },
@@ -59,29 +58,40 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         });
     }
 
-    $scope.PrintData=function()
-    {
+
+    var success = function (status) {
+        alert('Message: ' + status);
+    }
+
+    var error = function (status) {
+        alert('Error: ' + status);
+    }
+
+
+    $scope.PrintData = function () {
         alert("print start")
         try {
 
-            pdf.htmlToPDF({
-                data: "<html> <h1>  Hello World  </h1> </html>",
-                documentSize: "A4",
-                landscape: "portrait",
-                type: "base64"
-            }, alert("success"), alert("fail to download"));
+            window.html2pdf.create(
+        "<html><head></head><body><h1>Some</h1><p>html content.</p></body></html>",
+        "~/Documents/test11.pdf", // on iOS,
+        // "test.pdf", on Android (will be stored in /mnt/sdcard/at.modalog.cordova.plugin.html2pdf/test.pdf)
+        success,
+        error
+    );
 
-            pdf.htmlToPDF({
-                data: $("#BillSection").html(),
-                documentSize: "A4",
-                landscape: "portrait",
-                type: "base64"
-            }, alert("success 1"), alert("fail to download 1"));
+            window.html2pdf.create(
+      $("#BillSection").html(),
+      "~/Documents/test22.pdf", // on iOS,
+      // "test.pdf", on Android (will be stored in /mnt/sdcard/at.modalog.cordova.plugin.html2pdf/test.pdf)
+      success,
+      error
+  );
 
         } catch (e) {
 
         }
-       
+
     }
     $scope.getCompanyData = function () {
         var authData = localStorageService.get('authorizationData');
@@ -135,8 +145,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
         $scope.DetailBillObject = billObject;
 
-        for (var i = 0; i < billObject.invoiceDetail.length ; i++)
-        {
+        for (var i = 0; i < billObject.invoiceDetail.length ; i++) {
             $scope.ColumnDataArray.push(billObject.invoiceDetail[i].columnData);
         }
 
@@ -163,8 +172,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         for (var i = 0 ; i < $scope.InvoiceData.length ; i++) {
             var datevalue = new Date($scope.InvoiceData[i].createddate);
 
-            if (datevalue >= startDate && datevalue <= endDate)
-            {
+            if (datevalue >= startDate && datevalue <= endDate) {
                 $scope.renderingArray.push($scope.InvoiceData[i]);
             }
         }
@@ -172,19 +180,19 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         console.log("newArray");
         console.log($scope.renderingArray);
 
-     
+
     }
 
 
     $("#from, #to").datepicker({
-       
+
         onSelect: function (selectedDate) {
             if (this.id == 'from') {
                 var dateMin = $('#from').datepicker("getDate");
                 var rMin = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + 1); // Min Date = Selected + 1d
                 var rMax = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + 31); // Max Date = Selected + 31d
                 $('#to').datepicker("option", "minDate", rMin);
-              //  $('#to').datepicker("option", "maxDate", rMax);
+                //  $('#to').datepicker("option", "maxDate", rMax);
             }
 
             $(this).trigger("input");

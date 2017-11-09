@@ -69,28 +69,28 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
 
     $scope.PrintData = function () {
-        alert("print start")
-        try {
+  //      alert("print start")
+  //      try {
 
-            window.html2pdf.create(
-        "<html><head></head><body><h1>Some</h1><p>html content.</p></body></html>",
-        "~/Documents/test11.pdf", // on iOS,
-        // "test.pdf", on Android (will be stored in /mnt/sdcard/at.modalog.cordova.plugin.html2pdf/test.pdf)
-        success,
-        error
-    );
+  //          window.html2pdf.create(
+  //      "<html><head></head><body><h1>Some</h1><p>html content.</p></body></html>",
+  //      "~/Documents/test11.pdf", // on iOS,
+  //      // "test.pdf", on Android (will be stored in /mnt/sdcard/at.modalog.cordova.plugin.html2pdf/test.pdf)
+  //      success,
+  //      error
+  //  );
 
-            window.html2pdf.create(
-      $("#BillSection").html(),
-      "~/Documents/test22.pdf", // on iOS,
-      // "test.pdf", on Android (will be stored in /mnt/sdcard/at.modalog.cordova.plugin.html2pdf/test.pdf)
-      success,
-      error
-  );
+  //          window.html2pdf.create(
+  //    $("#BillSection").html(),
+  //    "~/Documents/test22.pdf", // on iOS,
+  //    // "test.pdf", on Android (will be stored in /mnt/sdcard/at.modalog.cordova.plugin.html2pdf/test.pdf)
+  //    success,
+  //    error
+  //);
 
-        } catch (e) {
+  //      } catch (e) {
 
-        }
+  //      }
 
     }
     $scope.getCompanyData = function () {

@@ -34,6 +34,9 @@ app.controller('indexController', ['$scope', '$location', 'authService', functio
         });
     }
 
-
+    window.onerror = function (error, file, line) {
+        alert("Error below described");
+        alert(error + ", " + file + ", " + line);
+    }
 
 }]);

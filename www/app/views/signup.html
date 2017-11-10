@@ -15,7 +15,7 @@
     <!-- Toolbar -->
     <div id="toolbar" class="tool-login primary-color animated fadeindown">
         <a href="#/login" class="open-left">
-            <i class="fa fa-arrow-circle-left"></i>
+         
         </a>
     </div>
     <div class="login-form animated fadeinup delay-2 z-depth-1">
@@ -40,14 +40,64 @@
             <label for="confirm">Confirm Password</label>
         </div>
 
-        <a data-ng-click="signUp()" class="waves-effect waves-light btn-large teal width-100 m-b-20 animated bouncein delay-4">Sign Up</a>
+        <a data-ng-click="signUp()" class="waves-effect waves-light btn-large teal width-100 m-b-20 animated bouncein delay-4">  Sign Up <i class="fa fa-sign-in"></i></a>
         <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
             {{message}}
         </div>
 
-
+        <span>Already have an account <a class="primary-text" href="#/login"> Login</a></span>
     </div>
 </div>
 
+   
 
+
+
+
+
+<style>
+    .btn-large {
+        color: #fff !important;
+        text-decoration: none !important;
+    }
+
+    .alert-danger {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .animationarea {
+        position: fixed;
+        width: 100%;
+        display: block;
+        z-index: 100;
+        left: 0;
+        top: 27%;
+        display: none;
+    }
+    
+    
+    
+     .loadinganimation {
+        background-color: rgba(63, 81, 181, 0.8);
+        height: 120px;
+        width: 120px;
+        color: #fff;
+        text-align: center;
+        border-radius: 8px;
+        margin:0 auto;
+        padding-top:25px;
+        
+      
+    }
+
+    .loadinganimation img
+    {
+        height:40px;
+        width:40px;
+         margin:0 auto;
+    
+        margin-bottom:10px;
+    }
+</style>
 

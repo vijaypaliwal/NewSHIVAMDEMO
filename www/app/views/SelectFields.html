@@ -6,11 +6,42 @@
     }
 </style>
 
+<style>
+    #getcompanyinfo {
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        background: #333;
+        bottom: 0;
+        text-align: center;
+        font-family: monospace;
+        display: none;
+    }
+
+        #getcompanyinfo p {
+            color: #fff;
+            margin-bottom: 0;
+        }
+</style>
+
+
+
 <h2>Manage Your Columns</h2>
 
 <hr />
 
+<div id="getcompanyinfo">
 
+
+   
+
+    <p> <i class="fa fa-spin fa-spinner"></i> Fetching Columns please wait... </p>
+
+</div>
 
 <!--<div class="row jumbotron">
     <div class="col-md-12 text-center">
@@ -73,15 +104,14 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <div ng-if="data.isEditable==true">
+                                     
 
+                                    
 
-                                            <button style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)"> <i class="fa fa-times" ></i> </button>
-                                        
-                                         
-
-                                            <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" type="button" class="btn btn-success" ng-click="ChangeStatus(data.id,data,true)" value="On" />
-                                            <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" type="button" class="btn btn-warning" ng-click="ChangeStatus(data.id,data,false)" value="Off" />
+                                        <div style="position:relative" ng-if="data.isEditable==true">
+                                            <a style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" ng-click="ChangeStatus(data.id,data,true)">  <i class="fa fa-toggle-off"></i></a>
+                                            <a style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" ng-click="ChangeStatus(data.id,data,false)"> <i class="fa fa-toggle-on"></i> </a>
+                                            <button style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)"> <i class="fa fa-times"></i> </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -143,12 +173,21 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <div ng-if="data.isEditable==true">
+
+                                 
+                                  
+
+                                    <div ng-if="data.isEditable==false">
+                                        <p style="margin-top:8px; padding:0">System field</p>  
+                                    </div>
+
+                                    <div style="position:relative" ng-if="data.isEditable==true">
 
 
-                                        <input style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" value="Remove" />
-                                        <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" type="button" class="btn btn-success" ng-click="ChangeStatus(data.id,data,true)" value="On" />
-                                        <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" type="button" class="btn btn-warning" ng-click="ChangeStatus(data.id,data,false)" value="Off" />
+
+                                        <a style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" ng-click="ChangeStatus(data.id,data,true)"> <i class="fa fa-toggle-off"></i> </a>
+                                        <a style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" ng-click="ChangeStatus(data.id,data,false)"> <i class="fa fa-toggle-on"></i> </a>
+                                        <button style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)"> <i class="fa fa-times"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -208,7 +247,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <div ng-if="data.isEditable==true">
+                                    <div style="position:relative" ng-if="data.isEditable==true">
 
 
                                         <input style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" value="Remove" />
@@ -290,7 +329,7 @@
         </ul>
     </div>
 
-
+    
     
     <script>
         function Toggle(ID) {
@@ -304,7 +343,7 @@
 
     </script>
 
-   
+    
         <!--<div class="row">
             <div class="col-md-12">
                 <div class="notification notification-success" >
@@ -656,8 +695,8 @@
 
     .collapsible-header i {
         width: 15px;
-        font-size: 1.6rem;
-        line-height: 26px;
+        font-size:16px;
+        line-height: 27px;
         display: block;
         float: left;
         text-align: center;
@@ -672,5 +711,32 @@
         line-height:32px;
         padding:0;
         text-align:center;
+    }
+
+    .table > thead > tr > th
+    {
+        background:#ddd;
+    }
+
+    .fa-toggle-on {
+        font-size: 40px;
+        color: #4CAF50;
+        position:absolute;
+    }
+
+    .fa-toggle-off {
+        font-size: 40px;
+        color: #ccc;
+        position: absolute;
+    }
+
+    table .btn-danger {
+        padding-left: 2px;
+        padding-right: 2px;
+        position: absolute;
+        left:70px;
+        border-radius: 100%;
+        margin-top: 3px;
+        line-height: 10px !important;
     }
 </style>

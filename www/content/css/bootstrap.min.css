@@ -209,7 +209,7 @@ html {
 }
 
 body {
-    font-family:Verdana;
+    font-family:monospace;
     font-size: 15px;
     line-height: 1.42857143;
     color: #222222;
@@ -292,7 +292,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  
     font-weight: 300;
     line-height: 1.1;
     color: inherit;
@@ -331,11 +331,11 @@ h2, .h2 {
 }
 
 h3, .h3 {
-    font-size: 26px;
+    font-size: 20px;
 }
 
 h4, .h4 {
-    font-size: 19px;
+    font-size: 17px;
 }
 
 h5, .h5 {
@@ -2130,8 +2130,8 @@ textarea.input-lg, select[multiple].input-lg {
 
 .btn-primary {
     color: #ffffff;
-    background-color: #008cba;
-    border-color: #0079a1;
+    background-color: #3F51B5 ;
+    border-color: #3F51B5 ;
 }
 
     .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
@@ -2145,8 +2145,8 @@ textarea.input-lg, select[multiple].input-lg {
     }
 
     .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
-        background-color: #008cba;
-        border-color: #0079a1;
+        background-color: #3F51B5;
+        border-color: #3F51B5;
     }
 
     .btn-primary .badge {
@@ -2156,8 +2156,8 @@ textarea.input-lg, select[multiple].input-lg {
 
 .btn-success {
     color: #ffffff;
-    background-color: #43ac6a;
-    border-color: #3c9a5f;
+    background-color: #689F38;
+    border-color: #689F38;
 }
 
     .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
@@ -2171,8 +2171,10 @@ textarea.input-lg, select[multiple].input-lg {
     }
 
     .btn-success.disabled, .btn-success[disabled], fieldset[disabled] .btn-success, .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled:active, .btn-success[disabled]:active, fieldset[disabled] .btn-success:active, .btn-success.disabled.active, .btn-success[disabled].active, fieldset[disabled] .btn-success.active {
-        background-color: #43ac6a;
-        border-color: #3c9a5f;
+        background-color: #689F38 !important;
+        border-color: #689F38;
+        opacity:0.5;
+        color:#fff !important;
     }
 
     .btn-success .badge {
@@ -4782,7 +4784,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
     }
 
 .alert-danger {
-    background-color: #f04124;
+    background-color:brown;
     border-color: #ea2f10;
     color: #ffffff;
 }
@@ -5486,10 +5488,13 @@ button.close {
     padding: 15px;
     border-bottom: 1px solid #e5e5e5;
     min-height: 16.42857143px;
+    background-color:#3F51B5 ;
+    color:#fff;
 }
 
     .modal-header .close {
         margin-top: -2px;
+         color:#fff;
     }
 
 .modal-title {

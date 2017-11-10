@@ -70,12 +70,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Invoice Back ground Color</label>
-                    <input type="color" ng-model="companyinfo.bgColor" class="form-control" />
-                </div>
-            </div>
+            
 
             <div class="col-md-6">
                 
@@ -118,11 +113,43 @@
 <div id="overlay">
     <div class="loaderDiv">
         <div class="row">
-            <img src="loader.gif" />
+            <img src="../../loader.gif" />
             <!--<div class="loader"></div>-->
         </div>
     </div>
 </div>
+
+
+<div class="getcompanyinfo">
+   
+    <p> <i class="fa fa-spin fa-spinner"></i> Fetching data please wait... </p> 
+
+</div>
+
+<style>
+    .getcompanyinfo
+    {
+        position:fixed;
+        z-index:100;
+        left:0;
+        right:0;
+        padding:10px;
+        padding-top:13px;
+        padding-bottom:13px;
+        background:#333;
+        bottom:0;
+        text-align:center;
+        font-family:monospace;
+        display:none;
+      
+    }
+
+    .getcompanyinfo p
+    {
+        color:#fff;
+        margin-bottom:0
+    }
+</style>
 
 
 

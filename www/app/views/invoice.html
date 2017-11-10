@@ -241,7 +241,7 @@
                         </label>
                     </td>
                     <td class="hidden-print">
-                        <a style="display:none" class="btn remove-btn btn-warning" ng-click="Editrow(obj)"> <i class="fa fa-pencil"></i> </a>
+                        <a  class="btn remove-btn btn-warning" ng-click="Editrow(obj)"> <i class="fa fa-pencil"></i> </a>
                         <a class="btn remove-btn btn-danger" ng-click="Deleterow(obj)"> <i class="fa fa-times"></i> </a>
                     </td>
                 </tr>
@@ -384,7 +384,9 @@
                             </select>
                             <label> {{object.columnlabel}} </label>
                         </div>
-                        <div ng-if="object.datatype == 'number'">
+                        <div ng-if="object.datatype == 'number' && object.columnlabel != 'Cost'">
+
+                        
                             <input ng-change="CalculatePrice(object,obj.id)" type="number" class="form-control" ng-model="object.value" value="{{object.defaultvalue}}" />
                             <label> {{object.columnlabel}} </label>
                         </div>
@@ -393,7 +395,7 @@
                             <label> {{object.columnlabel}} </label>
                         </div>
 
-
+                     
 
                     </div>
                 </div>
@@ -671,6 +673,22 @@
         bottom:0;
         max-height:100%;
     }
+
+    .modal-footer
+    {
+        text-align:left !important;
+        padding-left:20px !important;
+        border:transparent;
+    }
+
+    .modal-footer .btn
+    {
+        float:left !important;
+    }
   
+    .modal-body
+    {
+        padding-bottom:0;
+    }
 </style>
 

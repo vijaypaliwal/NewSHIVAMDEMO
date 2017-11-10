@@ -70,6 +70,9 @@ app.controller('CompanyDetailsController', ['$scope', 'localStorageService', fun
         $scope.handleFileSelect(event);
     });
     $scope.getinfo = function () {
+
+        $(".getcompanyinfo").show();
+
         var authData = localStorageService.get('authorizationData');
         if (authData) {
             $scope.userid = authData.userid;
@@ -91,10 +94,13 @@ app.controller('CompanyDetailsController', ['$scope', 'localStorageService', fun
 
                 }
                 $scope.$apply();
+
+                $(".getcompanyinfo").hide('fade');
             },
             error: function (jqXHR) {
                 $("#divError").show('fade');
                 $("#divErrorText").text(jqXHR.responseText);
+                $(".getcompanyinfo").hide('fade');
             }
         });
     }
@@ -108,7 +114,7 @@ app.controller('CompanyDetailsController', ['$scope', 'localStorageService', fun
 
         $scope.isSAving = true;
 
-        $("#overlay").show();
+        $(".animationarea").show();
 
         var authData = localStorageService.get('authorizationData');
         if (authData) {
@@ -125,7 +131,7 @@ app.controller('CompanyDetailsController', ['$scope', 'localStorageService', fun
             success: function (response) {
                 $scope.$apply();
 
-                $("#overlay").hide();
+                $(".animationarea").hide();
                 toastr["success"]("Company Created Successsfully");
                 $scope.isSAving = false;
                 window.location.href = '#/SelectFields';
@@ -133,6 +139,7 @@ app.controller('CompanyDetailsController', ['$scope', 'localStorageService', fun
             error: function (jqXHR) {
                 $("#divError").show('fade');
                 $("#divErrorText").text(jqXHR.responseText);
+                $(".animationarea").hide();
             }
         });
       

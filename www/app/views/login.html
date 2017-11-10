@@ -34,7 +34,7 @@
     <!-- Toolbar -->
     <div id="toolbar" class="tool-login primary-color animated fadeindown">
         <a href="javascript:history.back()" class="open-left">
-            <i class="fa fa-arrow-circle-left"></i>
+      
         </a>
     </div>
     <div class="login-form animated fadeinup delay-2 z-depth-1">
@@ -52,9 +52,9 @@
             <label for="login-psw">Password</label>
         </div>
 
-        <a data-ng-click="login()" class="waves-effect waves-light btn-large teal width-100 m-b-20 animated bouncein delay-4">Login</a>
+        <a data-ng-click="login()" class="waves-effect waves-light btn-large teal width-100 m-b-20 animated bouncein delay-4">  Login <i class="fa fa-sign-in"></i></a>
         <div data-ng-hide="message == ''" class="alert alert-danger">
-            {{message}}
+           Login failed {{message}}
         </div>
 
         <span>Don't have an account? <a class="primary-text" href="#/signup">Sign Up</a></span>
@@ -63,3 +63,19 @@
        
     </div>
 </div>
+
+
+
+<style>
+    .btn-large {
+        color: #fff !important;
+        text-decoration: none !important;
+    }
+
+    .alert-danger {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+   
+</style>

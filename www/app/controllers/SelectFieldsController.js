@@ -2,6 +2,8 @@
 app.controller('SelectFieldsController', ['$scope', 'localStorageService', function ($scope, localStorageService) {
     $scope.message = "Hello World !!";
 
+   
+
 
     $scope.myComboValues = [];
 
@@ -227,6 +229,14 @@ app.controller('SelectFieldsController', ['$scope', 'localStorageService', funct
     
 
     $scope.GetColumns = function () {
+
+      
+
+        $("#getcompanyinfo").show();
+
+
+
+        debugger;
         var authData = localStorageService.get('authorizationData');
         if (authData) {
             $scope.userid = authData.userid;
@@ -238,13 +248,18 @@ app.controller('SelectFieldsController', ['$scope', 'localStorageService', funct
             contentType: "application/json",
             //processData: false,
             success: function (data) {
+
+
+
+          
                 $scope.GetData = data;
 
-                console.log("Get Data");
+             
                 console.log($scope.GetData);
 
                 $scope.$apply()
                 $scope.Showlist($scope.currentDatatype);
+                $("#getcompanyinfo").hide('fade');
 
                 //alert("Successful");
             },
@@ -252,6 +267,7 @@ app.controller('SelectFieldsController', ['$scope', 'localStorageService', funct
                 alert(jqXHR.responseText);
                 $("#divError").show('fade');
                 $("#divErrorText").text(jqXHR.responseText);
+                $("#getcompanyinfo").hide('fade');
             }
         });
     }

@@ -18,15 +18,28 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
     var _saveRegistration = function (registration) {
 
+
+        debugger;
+
+        $(".animationarea").show();
+
         _logOut();
 
         return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
+
+            debugger;
+
+            $(".animationarea").hide('fade');
             return response;
         });
+
+        $(".animationarea").hide('fade');
 
     };
 
     var _login = function (loginData) {
+
+        $(".animationarea").show();
 
         var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
 
@@ -53,6 +66,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             deferred.resolve(response);
 
         }).error(function (err, status) {
+
+            $(".animationarea").hide();
             _logOut();
             deferred.reject(err);
         });

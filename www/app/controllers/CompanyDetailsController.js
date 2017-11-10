@@ -106,6 +106,28 @@ app.controller('CompanyDetailsController', ['$scope', 'localStorageService', fun
     }
 
 
+
+    $scope.ScanData = function (ID) {
+
+
+        alert("ID " + ID);
+        var scanner = cordova.plugins.barcodeScanner;
+
+        scanner.scan(function (result) {
+
+            alert("Scan In");
+
+            $(ID).val(result.text);
+            $(ID).trigger("input");
+
+
+        }, function (error) {
+            alert("Scanning failed: ", error);
+        });
+    }
+
+
+
     $("#fileChoose").click(function () {
 
         $("#file").trigger("click");

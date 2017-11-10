@@ -15,10 +15,15 @@ app.controller('indexController', ['$scope', '$location', 'authService', functio
     console.log($scope.authentication)
 
     
-    $scope.ScanData = function (ID) {
+    $scope.ScanData123 = function (ID) {
+
+
+        alert("ID " +  ID);
         var scanner = cordova.plugins.barcodeScanner;
 
         scanner.scan(function (result) {
+
+            alert("Scan In");
 
             $(ID).val(result.text);
             $(ID).trigger("input");

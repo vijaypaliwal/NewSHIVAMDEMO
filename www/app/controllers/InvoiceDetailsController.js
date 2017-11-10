@@ -153,7 +153,7 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
     }
 
 
-    $("#from, #to").datepicker({
+    $("#from1, #to1").datepicker({
        
         onSelect: function (selectedDate) {
             if (this.id == 'from') {

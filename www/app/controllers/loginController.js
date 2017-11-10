@@ -15,7 +15,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         authService.login($scope.loginData).then(function (response) {
             $(".animationarea").hide('fade');
-            $location.path('/CompanyDetails');
+            $location.path('/dashboard');
 
         },
          function (err) {

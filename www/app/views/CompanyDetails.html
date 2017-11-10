@@ -15,10 +15,20 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group">
-                    <label>Registration Number</label>
-                    <input ng-model="companyinfo.registrationNo" type="text" class="form-control" />
+                <div class="row">
+                    <div class="col-xs-9">
+                        <div class="form-group">
+                            <label>Registration Number</label>
+                            <input ng-model="companyinfo.registrationNo" id="RegistrationNo" type="text" class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <a class="btn btn-primary" ng-click="ScanData('#RegistrationNo')"><i class="fa fa-barcode"></i> </a>
+                    </div>
+                     
                 </div>
+                
             </div>
         </div>
 

@@ -71,7 +71,34 @@ app.controller('invoiceController', ['$scope', 'localStorageService', '$location
 
     $scope.InvoiceData = { userid: "", name: "", email: "", address: "", contact: "", invoiceno: randomString(5, "0123456789"), invoicedate: moment(new Date()).format("YYYY-MM-DD"), tinno: "", notes: "", subtotal: "", totalamount: "", paidamount: "", taxapplied: 0, invoicerows: [] }
 
+    function CheckPrinterInv() {
+        cordova.plugins.printer.check(function (available, count) {
+            alert(available ? 'Found ' + count + ' services' : 'Printer Not found');
+            return available;
+        });
+    }
 
+    $scope.PrintDataInv = function () {
+
+        if (CheckPrinterInv() == true) {
+
+            try {
+
+
+                var page = location.href;
+
+                cordova.plugins.printer.print(page, 'Document.html');
+
+            }
+            catch (err) {
+                alert(err.message);
+            }
+        }
+        else {
+            alert("Please connect with printer.")
+        }
+
+    }
     $scope.AddRow = function () {
         //var _obj = { Id: 0, Column1: "", Column2: "", Column3: "", Column4: "", Column5: "" };
         //$scope.Columnlist.push(_obj);

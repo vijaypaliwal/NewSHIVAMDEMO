@@ -458,7 +458,7 @@
             <div class="col-md-12">
                 <a ng-click="postdata()" ng-if="isPostingData == false" ng-disabled="CheckSaveDisabled()" class="btn btn-success"> <i class="fa fa-check"></i> Save </a>
                 <a ng-disabled="true" ng-if="isPostingData == true" class="btn btn-success"> <i class="fa fa-check fa-spin"></i> Save </a>
-                <a onclick="window.print()" class="btn btn-warning"><i class="fa fa-print"></i> Print </a>
+                <a ng-click="PrintDataInv()" class="btn btn-warning"><i class="fa fa-print"></i> Print </a>
                 <a href="#/InvoiceDetails" class="btn btn-danger"> <i class="fa fa-times"></i> Cancel </a>
             </div>
         </div>

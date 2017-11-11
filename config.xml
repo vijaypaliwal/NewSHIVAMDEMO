@@ -58,6 +58,11 @@
     <plugin name="cordova-plugin-dialogs" />
     <!--<plugin name="cordova-plugin-file" />
     <plugin name="cordova-plugin-file-transfer" />-->
+
+
+  <plugin name="cordova-plugin-file" source="npm" spec="~4.1.1"/>
+
+  <plugin name="cordova-plugin-file-transfer" source="npm" spec="~1.5.0"/>
     <plugin name="cordova-plugin-geolocation" />
     <plugin name="cordova-plugin-globalization" />
     <plugin name="cordova-plugin-inappbrowser" />

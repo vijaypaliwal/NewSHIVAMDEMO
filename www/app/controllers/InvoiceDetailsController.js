@@ -15,6 +15,53 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
     $scope.startDate = "";
     $scope.endDate = "";
 
+    $scope.GetInvoiceDetails = function () {
+        var authData = localStorageService.get('authorizationData');
+        if (authData) {
+            $scope.userid = authData.userid;
+        }
+        $.ajax({
+            url: serviceBase + '/api/InvoiceDetails?userid=' + $scope.userid,
+            method: 'GET',
+            //data: JSON.stringify(Model),
+            contentType: "application/json",
+            //processData: false,
+            success: function (data) {
+                $scope.InvoiceData = data;
+
+                $scope.renderingArray = data;
+                console.log("Data");
+                console.log($scope.InvoiceData);
+                $scope.$apply();
+
+
+                for (var i = 0 ; i < $scope.InvoiceData.length ; i++)
+                {
+                    debugger;
+                    $scope.InvoiceData[i].invoiceDetail = JSON.parse($scope.InvoiceData[i].invoiceDetail);
+                    $scope.InvoiceData[i].createddate = moment($scope.InvoiceData[i].createddate).format("YYYY-MM-DD");
+                    $scope.InvoiceData[i].invoiceDate = moment($scope.InvoiceData[i].invoiceDate).format("YYYY-MM-DD");
+                    //$scope.InvoiceData[i].createddate = new Date($scope.InvoiceData[i].createddate);
+                    //$scope.InvoiceData[i].createddate = $scope.InvoiceData[i].createddate.toISOString().slice(0, 10);
+                }
+
+                console.log("Data after parsing");
+                console.log($scope.InvoiceData);
+
+                $("#getinvoiceinfo").hide('fade');
+                
+                //$scope.Showlist($scope.currentDatatype);
+                //alert("Successful");
+            },
+            error: function (jqXHR) {
+                $("#getinvoiceinfo").hide('fade');
+                alert(jqXHR.responseText);
+                $("#divError").show('fade');
+                $("#divErrorText").text(jqXHR.responseText);
+            }
+        });
+    }
+
 
     function CheckPrinter() {
         cordova.plugins.printer.check(function (available, count) {
@@ -40,52 +87,9 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
             }
         }
         else {
-            alert("Please connect with some printer.")
+            alert("Please connect with printer.")
         }
 
-    }
-
-    $scope.GetInvoiceDetails = function () {
-        var authData = localStorageService.get('authorizationData');
-        if (authData) {
-            $scope.userid = authData.userid;
-        }
-        $.ajax({
-            url: serviceBase + '/api/InvoiceDetails?userid=' + $scope.userid,
-            method: 'GET',
-            //data: JSON.stringify(Model),
-            contentType: "application/json",
-            //processData: false,
-            success: function (data) {
-                $scope.InvoiceData = data;
-
-                $scope.renderingArray = data;
-                console.log("Data");
-                console.log($scope.InvoiceData);
-                $scope.$apply();
-
-
-                for (var i = 0 ; i < $scope.InvoiceData.length ; i++) {
-                    debugger;
-                    $scope.InvoiceData[i].invoiceDetail = JSON.parse($scope.InvoiceData[i].invoiceDetail);
-                    $scope.InvoiceData[i].createddate = moment($scope.InvoiceData[i].createddate).format("YYYY-MM-DD");
-                    $scope.InvoiceData[i].invoiceDate = moment($scope.InvoiceData[i].invoiceDate).format("YYYY-MM-DD");
-                    //$scope.InvoiceData[i].createddate = new Date($scope.InvoiceData[i].createddate);
-                    //$scope.InvoiceData[i].createddate = $scope.InvoiceData[i].createddate.toISOString().slice(0, 10);
-                }
-
-                console.log("Data after parsing");
-                console.log($scope.InvoiceData);
-
-                //$scope.Showlist($scope.currentDatatype);
-                //alert("Successful");
-            },
-            error: function (jqXHR) {
-                alert(jqXHR.responseText);
-                $("#divError").show('fade');
-                $("#divErrorText").text(jqXHR.responseText);
-            }
-        });
     }
 
 
@@ -125,7 +129,9 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
     }
     function init() {
-        debugger;
+
+        $("#getinvoiceinfo").show();
+      
         $scope.getCompanyData();
         $scope.GetInvoiceDetails();
     }
@@ -141,7 +147,8 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
 
         $scope.DetailBillObject = billObject;
 
-        for (var i = 0; i < billObject.invoiceDetail.length ; i++) {
+        for (var i = 0; i < billObject.invoiceDetail.length ; i++)
+        {
             $scope.ColumnDataArray.push(billObject.invoiceDetail[i].columnData);
         }
 
@@ -168,7 +175,8 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         for (var i = 0 ; i < $scope.InvoiceData.length ; i++) {
             var datevalue = new Date($scope.InvoiceData[i].createddate);
 
-            if (datevalue >= startDate && datevalue <= endDate) {
+            if (datevalue >= startDate && datevalue <= endDate)
+            {
                 $scope.renderingArray.push($scope.InvoiceData[i]);
             }
         }
@@ -176,19 +184,19 @@ app.controller('InvoiceDetailsController', ['$scope', 'localStorageService', fun
         console.log("newArray");
         console.log($scope.renderingArray);
 
-
+     
     }
 
 
     $("#from1, #to1").datepicker({
-
+       
         onSelect: function (selectedDate) {
             if (this.id == 'from') {
                 var dateMin = $('#from').datepicker("getDate");
                 var rMin = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + 1); // Min Date = Selected + 1d
                 var rMax = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + 31); // Max Date = Selected + 31d
                 $('#to').datepicker("option", "minDate", rMin);
-                //  $('#to').datepicker("option", "maxDate", rMax);
+              //  $('#to').datepicker("option", "maxDate", rMax);
             }
 
             $(this).trigger("input");

@@ -248,11 +248,9 @@
                                 </td>
                                 <td>
                                     <div style="position:relative" ng-if="data.isEditable==true">
-
-
-                                        <input style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" value="Remove" />
-                                        <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" type="button" class="btn btn-success" ng-click="ChangeStatus(data.id,data,true)" value="On" />
-                                        <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" type="button" class="btn btn-warning" ng-click="ChangeStatus(data.id,data,false)" value="Off" />
+                                        <a style="padding-left:2px; padding-right:2px;" ng-if="data.active == false"  ng-click="ChangeStatus(data.id,data,true)"> <i class="fa fa-toggle-off"></i> </a>
+                                        <a style="padding-left:2px; padding-right:2px;" ng-if="data.active == true"   ng-click="ChangeStatus(data.id,data,false)"> <i class="fa fa-toggle-on"></i> </a>
+                                        <button style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" > <i class="fa fa-times"></i> </button>
                                     </div>
                                 </td>
                             </tr>
@@ -310,13 +308,11 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <div ng-if="data.isEditable==true">
-
-
-                                        <input style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)" value="Remove" />
-                                        <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" type="button" class="btn btn-success" ng-click="ChangeStatus(data.id,data,true)" value="On" />
-                                        <input style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" type="button" class="btn btn-warning" ng-click="ChangeStatus(data.id,data,false)" value="Off" />
-                                    </div>
+                                    <div style="position:relative" ng-if="data.isEditable==true">
+                                        <a style="padding-left:2px; padding-right:2px;" ng-if="data.active == false" ng-click="ChangeStatus(data.id,data,true)"> <i class="fa fa-toggle-off"></i> </a>
+                                        <a style="padding-left:2px; padding-right:2px;" ng-if="data.active == true" ng-click="ChangeStatus(data.id,data,false)"> <i class="fa fa-toggle-on"></i> </a>
+                                        <button style="padding-left:2px; padding-right:2px;" type="button" class="btn btn-danger" ng-click="RemoveField(data.id)"> <i class="fa fa-times"></i> </button>
+                                    </div> 
                                 </td>
                             </tr>
                         </tbody>

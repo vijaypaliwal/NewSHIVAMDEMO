@@ -85,7 +85,7 @@ app.config(function ($routeProvider) {
 });
 
 //var serviceBase = 'http://localhost:26264/';
-var serviceBase = 'http://shivaminventoryapi.azurewebsites.net/';
+var serviceBase = 'http://shivamapi.shivamitconsultancy.com/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'ngAuthApp'
